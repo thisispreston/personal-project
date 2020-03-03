@@ -12,3 +12,9 @@ CREATE TABLE products (
     name VARCHAR(50),
     description VARCHAR(250)
 );
+
+CREATE TABLE cart (
+    cart_id SERIAL PRIMARY KEY,
+    cus_id INT REFERENCES customers(cus_id),
+    prod_id INT REFERENCES products(prod_id)
+);
