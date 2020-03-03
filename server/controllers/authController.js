@@ -48,9 +48,16 @@ module.exports = {
   edit: async (req, res) => {
     console.log(chalk.red("hit edit", req.body));
     const db = req.app.get("db").auth;
-    const { username, password } = req.body;
+    const { username, email } = req.body;
 
-    // EDIT CUS INFO
+    try {
+      let editedCus = await db.edit_cus([username, email])
+      editedCus = editedCus[0];
+      req.session.customer = editedCus;
+      return res.status(201).send(req.session.customer);
+    } catch (err) {
+      return res.sendStatus(500);
+    }
   },
   delete: async (req, res) => {
     console.log(chalk.red("hit delete", req.params));
@@ -72,7 +79,9 @@ module.exports = {
   },
   logout: (req, res) => {
     console.log(chalk.red("hit logout"));
-    if(req.session) req.session.destroy()
+    if (req.session) {
+      req.session.destroy()
+    }
     return res.sendStatus(200)
   }
 };

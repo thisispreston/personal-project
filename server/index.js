@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express"),
   massive = require("massive"),
   session = require("express-session"),
+  ctrl = require("./controllers/controller")
   authCtrl = require("./controllers/authController"),
   checkCus = require('./middleware/checkCus'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
@@ -32,16 +33,16 @@ massive({
 })
 
 //AUTH ENDPOINTS
-app.post('/api/login', checkCus, authCtrl.login)
-app.post('/api/register', authCtrl.register)
-app.post('/api/logout', authCtrl.logout)
-app.get('/api/check', checkCus)
+app.post('/api/auth/login', checkCus, authCtrl.login)
+app.post('/api/auth/register', authCtrl.register)
+app.post('/api/auth/logout', authCtrl.logout)
+app.get('/api/auth/check', checkCus)
 
 //PRODUCT ENDPOINTS
-// app.get('/api/products')
+app.get('/api/products', ctrl.getProducts)
 
 //CART ENDPOINTS
-// app.post('/api/carts')
-// app.get('/api/carts')
-
+app.get('/api/cart/:id', ctrl.getCart)
+app.post('/api/cart/:id', ctrl.addToCart)
+app.delete('/api/cart/:id', ctrl.deleteCart)
 
