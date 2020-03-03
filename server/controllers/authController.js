@@ -60,25 +60,28 @@ module.exports = {
     }
   },
   delete: async (req, res) => {
-    console.log(chalk.red("hit delete", req.params));
-    const db = req.app.get("db").auth;
-    const { username, password } = req.body;
-    const { id } = req.params
+    console.log(chalk.red("hit delete", req.params))
+    const db = req.app.get("db").auth
+    const { username, password } = req.body
+    const { cus_id } = req.params
 
-    let cus = await db.check_cus(username);
-    cus = cus[0];
+    let cus = await db.check_cus(username)
+    cus = cus[0]
+    if (!cus) {
+      return res.status(400).send("Username not found")
+    }
 
-    const authenticated = bcrypt.compareSync(password, cus.password);
+    const authenticated = bcrypt.compareSync(password, cus.password)
     if (authenticated) {
-      delete cus.password;
-      let cusDeleted = await db.delete_cus(id);
-      return res.status(202).send(cusDeleted);
+      delete cus.password
+      let cusDeleted = await db.delete_cus(cus_id)
+      return res.status(202).send(cusDeleted)
     } else {
-      return res.status(400).send("Unable to delete account");
+      return res.status(400).send("Unable to delete account")
     }
   },
   logout: (req, res) => {
-    console.log(chalk.red("hit logout"));
+    console.log(chalk.red("hit logout"))
     if (req.session) {
       req.session.destroy()
     }
