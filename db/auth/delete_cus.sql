@@ -1,0 +1,4 @@
+
+
+RETURNING "Customer deleted"
+;
