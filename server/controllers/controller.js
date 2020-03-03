@@ -7,7 +7,7 @@ module.exports = {
     
     try {
       let products = await db.all_products()
-      return res.status(201).send(products)
+      return res.status(200).send(products)
     } catch (err) {
       return res.sendStatus(500)
     }
@@ -19,7 +19,7 @@ module.exports = {
     
     try {
       let cart = await db.get_cart(cus_id)
-      return res.status(201).send(cart)
+      return res.status(200).send(cart)
     } catch (err) {
       return res.sendStatus(500)
     }
@@ -33,7 +33,7 @@ module.exports = {
     // MAY NEED AN AWAIT HERE. BE AWARE
     try {
       db.add_to_cart([cus_id, product_id])
-      return res.sendStatus(200)
+      return res.sendStatus(201)
     } catch (err) {
       return res.sendStatus(500)
     }

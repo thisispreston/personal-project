@@ -10,7 +10,7 @@ module.exports = {
     let cus = await db.check_cus(username);
     cus = cus[0];
     if (!cus) {
-      return res.status(400).send("Username not found");
+      return res.status(404).send("Username not found");
     }
 
     const authenticated = bcrypt.compareSync(password, cus.password);
@@ -19,7 +19,7 @@ module.exports = {
       req.session.customer = cus;
       return res.status(202).send(req.session.customer);
     } else {
-      return res.status(400).send("Incorrect username or password");
+      return res.status(404).send("Incorrect username or password");
     }
   },
   register: async (req, res) => {
@@ -30,7 +30,7 @@ module.exports = {
     let cus = await db.check_cus(username);
     cus = cus[0];
     if (cus) {
-      return res.status(400).send("Username already exists");
+      return res.status(409).send("Username already exists");
     }
 
     const salt = bcrypt.genSaltSync(10);
@@ -49,12 +49,13 @@ module.exports = {
     console.log(chalk.red("hit edit", req.body));
     const db = req.app.get("db").auth;
     const { username, email } = req.body;
+    const { cus_id } = req.params
 
     try {
-      let editedCus = await db.edit_cus([username, email])
+      let editedCus = await db.edit_cus({ cus_id, username, email })
       editedCus = editedCus[0];
       req.session.customer = editedCus;
-      return res.status(201).send(req.session.customer);
+      return res.status(202).send(req.session.customer);
     } catch (err) {
       return res.sendStatus(500);
     }
@@ -68,16 +69,16 @@ module.exports = {
     let cus = await db.check_cus(username)
     cus = cus[0]
     if (!cus) {
-      return res.status(400).send("Username not found")
+      return res.status(404).send("Username not found")
     }
 
     const authenticated = bcrypt.compareSync(password, cus.password)
     if (authenticated) {
       delete cus.password
-      let cusDeleted = await db.delete_cus(cus_id)
-      return res.status(202).send(cusDeleted)
+      await db.delete_cus(cus_id)
+      return res.sendStatus(200);
     } else {
-      return res.status(400).send("Unable to delete account")
+      return res.sendStatus(500);
     }
   },
   logout: (req, res) => {
