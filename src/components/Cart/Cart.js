@@ -34,7 +34,7 @@ class Cart extends Component {
   render() {
     //map over cart and make a card for each product in cart
     return (
-      <div>
+      <div className='cart'>
         Cart
       </div>
     )

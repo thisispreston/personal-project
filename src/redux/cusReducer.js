@@ -12,6 +12,8 @@ const LOGIN = "LOGIN"
 const LOGOUT = "LOGOUT"
 const REGISTER = "REGISTER"
 const CLEAR_REDUCER = "CLEAR_REDUCER"
+const DELETE_ACCOUNT = "DELETE_ACCOUNT"
+const EDIT_ACCOUNT = "EDIT_ACCOUNT"
 
 export function clearReducer() {
 
@@ -59,6 +61,25 @@ export function logout() {
     return action
 }
 
+
+export function editAccount() {
+    let action = {
+        type: EDIT_ACCOUNT,
+        payload: axios.post('/api/auth/edit')
+    }    
+    
+    return action
+}
+
+export function deleteAccount() {
+    let action = {
+        type: DELETE_ACCOUNT,
+        payload: axios.post('/api/auth/delete')
+    }    
+
+    return action
+}
+
 export default function cusReducer(state = initialState, action) {
     switch(action.type) {
         case CHECK_CUS + '_PENDING':
@@ -86,6 +107,18 @@ export default function cusReducer(state = initialState, action) {
             return {...state, loading: false, customer: action.payload.data}
         case REGISTER + '_REJECTED':
             return {...state, loading: false, error: true, errorMessage: action.payload.response.data}
+        case EDIT_ACCOUNT + '_PENDING':
+            return {...state, loading: true, error: false}
+        case EDIT_ACCOUNT + '_FULFILLED':
+            return {...state, loading: false, customer: action.payload.data}
+        case EDIT_ACCOUNT + '_REJECTED':
+            return {...state, loading: false, error: true, errorMessage: action.payload.response.data}
+        case DELETE_ACCOUNT + '_PENDING':
+            return {...state, loading: true,error: false}
+        case DELETE_ACCOUNT + '_FULFILLED':
+            return {...state, loading: false,customer: {}}
+        case DELETE_ACCOUNT + '_REJECTED':
+            return {...state, loading: false,error: true, errorMessage: action.payload.response.data}
         case CLEAR_REDUCER:
             return {...state, ...initialState}
         default:

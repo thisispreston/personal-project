@@ -36,6 +36,9 @@ massive({
 app.post('/api/auth/login', checkCus, authCtrl.login)
 app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/logout', authCtrl.logout)
+app.post('/api/auth/delete', authCtrl.delete)
+app.post('/api/auth/edit', authCtrl.edit)
+
 app.get('/api/auth/check', checkCus)
 
 //PRODUCT ENDPOINTS

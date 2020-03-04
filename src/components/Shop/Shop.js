@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import {Link, Route} from 'react-router-dom'
-import ShopHome from './ShopHome'
-import Products from './Products'
 import axios from 'axios'
+// import {Link, Route} from 'react-router-dom'
  
 class Shop extends Component {
   constructor(props) {
@@ -25,9 +23,9 @@ class Shop extends Component {
     }) 
   }
 
-  viewProduct = () => {
-    //reroute to product page
-  }
+  // viewProduct = () => {
+  //   reroute to product page
+  // }
 
   // addToCart = async () => {
   //   await axios
@@ -38,13 +36,12 @@ class Shop extends Component {
     //map over products and render elements for each
 
     return (
-      <div>
+      <div className="shop">
         Shop
       </div>
     )
   }
 }
-
 
 export default Shop
 
