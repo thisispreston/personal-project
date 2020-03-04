@@ -48,20 +48,43 @@ function Landing (props) {
         ) : (
           <div>
             <form
-            onSubmit={e => {
+              onSubmit={e => {
                 e.preventDefault()
                 props.register(email, password)
-            }}>
-              <input type="email" value={email} placeholder="enter your email" onChange={e => setEmail(e.target.value)}></input>
-              <input type="password" value={password} placeholder="enter your password" onChange={e => setPassword(e.target.value)}></input>
-              <button>Register</button>
-              <p>Already have an account? <span style={{color: "blue"}} onClick={e => setRegistered(true)}>Click here to sign in.</span></p>
+              }}
+            >
+              <input 
+                type="email" 
+                value={email} 
+                placeholder="enter your email" 
+                onChange={e => setEmail(e.target.value)}
+              ></input>
+              <input 
+                type="password" 
+                value={password} 
+                placeholder="enter your password" 
+                onChange={e => setPassword(e.target.value)}
+              ></input>
+              <button>
+                Register
+              </button>
+              <p>
+                Already have an account? 
+                <span 
+                  style={{color: "blue"}} 
+                  onClick={e => setRegistered(true)}
+                >
+                  Click here to sign in.
+                </span>
+              </p>
             </form>
           </div>
         )
       ) : (
         <div>
-          <h3>Logged in as: {props.userReducer.user.user_email}</h3>
+          <h3>
+            Logged in as: {props.userReducer.user.user_email}
+          </h3>
         </div>
       )}
       <Errors />
