@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 function Product (props) {
-  const { prod_id, img, price, name, description, addToCart } = props
+  // const { prod_id, img, price, name, description, addToCart } = props
 
   return (
     //onClick= addToCart(cus_id)

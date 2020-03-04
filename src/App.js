@@ -1,5 +1,6 @@
 import React from 'react';
 import routes from './routes'
+import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {checkCus} from './redux/cusReducer'
 import {Redirect} from 'react-router-dom'
@@ -13,10 +14,10 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.props.customer.email) {
+    if (!this.props.customer.username && this.props.location.pathname !== "/") {
       return <Redirect to="/" />
     }
-    if (this.props.customer.email) {
+    if (this.props.customer.username) {
       return <Redirect to="/shop" />
     }
 
@@ -31,8 +32,8 @@ class App extends React.Component {
 
 const mapStateToProps = reduxState => {
   return {
-    customer: reduxState.cusReducer.customer
+    customer: reduxState.customer
   }
 }
 
-export default connect(mapStateToProps, {checkCus})(App);
+export default connect(mapStateToProps, {checkCus})(withRouter(App));

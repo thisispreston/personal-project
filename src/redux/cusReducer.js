@@ -27,7 +27,7 @@ export function clearReducer() {
 export function checkCus() {
     let action = {
         type: CHECK_CUS,
-        payload: axios.get('/api/auth/check')
+        payload: axios.get('/api/check')
     }
 
     return action

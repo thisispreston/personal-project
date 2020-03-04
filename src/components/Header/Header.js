@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../redux/userReducer";
+import { logout } from "../../redux/cusReducer";
 
 function Header () {
 

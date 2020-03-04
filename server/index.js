@@ -39,7 +39,7 @@ app.post('/api/auth/logout', authCtrl.logout)
 app.delete('/api/auth/delete', authCtrl.delete)
 app.put('/api/auth/edit', authCtrl.edit)
 
-app.get('/api/auth/check', checkCus)
+app.get('/api/check', checkCus)
 
 //PRODUCT ENDPOINTS
 app.get('/api/products', ctrl.getProducts)

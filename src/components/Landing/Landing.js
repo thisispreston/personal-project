@@ -1,106 +1,105 @@
-import React, {useState} from "react";
-import { connect } from "react-redux";
-import { login, register } from "../redux/userReducer";
+import React, {useState} from "react"
+import { connect } from "react-redux"
+import { login, register } from "../../redux/cusReducer"
 
 function Landing (props) {
-  const [registered, setRegistered] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [registered, setRegistered] = useState(true)
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   return (
     <div className="landing">
-      <h1>Super Original E-Commerce Site</h1>
-      {!props.cusReducer.user.user_email ? (
-        registered ? (
-          <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault()
-                props.login(email, password)
-              }}
-            >
-              <input 
-                type="email"
-                value={email}
-                placeholder="enter your email"
-                onChange={e => setEmail(e.target.value)}
-              ></input>
-              <input 
-                type="password"
-                value={password}
-                placeholder="enter your password"
-                onChange={e => setPassword(e.target.value)}
-              ></input>
-              <button>
-                Login
-              </button>
-              <p>
-                Don't have an account?
-                <span 
-                  style={{color: "blue"}}
-                  onClick={e => setRegistered(false)}
-                >
-                  Click here to register.
-                </span>
-              </p>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault()
-                props.register(email, password)
-              }}
-            >
-              <input 
-                type="email" 
-                value={email} 
-                placeholder="enter your email" 
-                onChange={e => setEmail(e.target.value)}
-              ></input>
-              <input 
-                type="password" 
-                value={password} 
-                placeholder="enter your password" 
-                onChange={e => setPassword(e.target.value)}
-              ></input>
-              <button>
-                Register
-              </button>
-              <p>
-                Already have an account? 
-                <span 
-                  style={{color: "blue"}} 
-                  onClick={e => setRegistered(true)}
-                >
-                  Click here to sign in.
-                </span>
-              </p>
-            </form>
-          </div>
-        )
+      <div
+        className="companyInfo"
+      >
+        <p>
+          ARTSY FARTSY: We love to get artists' work sold to those looking for simple pdf files.
+        </p>
+      </div>
+      {registered ? (
+        <div>
+          <form
+            onSubmit={e => {
+              e.preventDefault()
+              props.login(username, password)
+            }}
+          >
+            <input 
+              type="text"
+              value={username}
+              placeholder="enter a username"
+              onChange={e => setUsername(e.target.value)}
+            ></input>
+            <input 
+              type="password"
+              value={password}
+              placeholder="enter your password"
+              onChange={e => setPassword(e.target.value)}
+            ></input>
+            <button>
+              LOGIN
+            </button>
+            <p>
+              Don't have an account?
+              <span 
+                style={{color: "blue"}}
+                onClick={e => setRegistered(false)}
+              >
+                Click here to register.
+              </span>
+            </p>
+          </form>
+        </div>
       ) : (
         <div>
-          <h3>
-            Logged in as: {props.userReducer.user.user_email}
-          </h3>
+          <form
+            onSubmit={e => {
+              e.preventDefault()
+              props.register(username, email, password)
+            }}
+          >
+            <input 
+              type="text"
+              value={username}
+              placeholder="enter a username"
+              onChange={e => setUsername(e.target.value)}
+            ></input>
+            <input 
+              type="email" 
+              value={email} 
+              placeholder="enter your email" 
+              onChange={e => setEmail(e.target.value)}
+            ></input>
+            <input 
+              type="password" 
+              value={password} 
+              placeholder="enter your password" 
+              onChange={e => setPassword(e.target.value)}
+            ></input>
+            <button>
+              REGISTER
+            </button>
+            <p>
+              Already have an account? 
+              <span 
+                style={{color: "blue"}} 
+                onClick={e => setRegistered(true)}
+              >
+                Click here to sign in.
+              </span>
+            </p>
+          </form>
         </div>
       )}
-      <Errors />
+      {/* <Errors /> */}
     </div>
-  );
+  )
 }
-
-const mapStateToProps = reduxState => {
-  return {
-    cusReducer: reduxState.cusReducer
-  };
-};
 
 const mapDispatchToProps = {
   login,
   register
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(null, mapDispatchToProps)(Landing)
