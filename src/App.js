@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Header/Header'
 import routes from './routes'
 import {connect} from 'react-redux'
 import {checkCus} from './redux/cusReducer'
 import {Redirect} from 'react-router-dom'
+import Header from './components/Header/Header'
 import './App.css';
 
 class App extends React.Component {
@@ -13,10 +13,15 @@ class App extends React.Component {
   }
 
   render() {
-    if(this.props.cusReducer.customer.email) return <Redirect to="/shop" />
-    let loading = this.props.cusReducer.loading ? "busy-cursor" : null;
+    if (!this.props.customer.email) {
+      return <Redirect to="/" />
+    }
+    if (this.props.customer.email) {
+      return <Redirect to="/shop" />
+    }
+
     return (
-      <div className={`App ${loading}`}>
+      <div className={`App`}>
         <Header />
         {routes}
       </div>
@@ -26,7 +31,7 @@ class App extends React.Component {
 
 const mapStateToProps = reduxState => {
   return {
-    cusReducer: reduxState.cusReducer
+    customer: reduxState.cusReducer.customer
   }
 }
 

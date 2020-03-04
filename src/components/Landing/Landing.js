@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import { logout, login, register } from "../redux/userReducer";
+import { login, register } from "../redux/userReducer";
 
 function Landing (props) {
   const [registered, setRegistered] = useState(true);
@@ -8,7 +8,7 @@ function Landing (props) {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="header">
+    <div className="landing">
       <h1>Super Original E-Commerce Site</h1>
       {!props.cusReducer.user.user_email ? (
         registered ? (
@@ -100,7 +100,6 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = {
   login,
-  logout,
   register
 };
 

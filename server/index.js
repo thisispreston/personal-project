@@ -36,8 +36,8 @@ massive({
 app.post('/api/auth/login', checkCus, authCtrl.login)
 app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/logout', authCtrl.logout)
-app.post('/api/auth/delete', authCtrl.delete)
-app.post('/api/auth/edit', authCtrl.edit)
+app.delete('/api/auth/delete', authCtrl.delete)
+app.put('/api/auth/edit', authCtrl.edit)
 
 app.get('/api/auth/check', checkCus)
 
@@ -47,5 +47,6 @@ app.get('/api/products', ctrl.getProducts)
 //CART ENDPOINTS
 app.get('/api/cart/:id', ctrl.getCart)
 app.post('/api/cart/:id', ctrl.addToCart)
-app.delete('/api/cart/:id', ctrl.deleteCart)
+app.delete('/api/cart/:id', ctrl.clearCart) //cus_id
+app.delete('/api/cart/item/:id', ctrl.deleteItem) //cart_id
 
