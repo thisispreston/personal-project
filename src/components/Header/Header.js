@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../redux/cusReducer";
 
-function Header () {
+function Header (props) {
 
   return (
     <div className="landing">
@@ -20,7 +20,7 @@ function Header () {
         ARTSY FARTSY
       </Link>
       <h2
-        // onClick={()=>props.logout()}
+        onClick={props.logout}
       >
         Logout
       </h2>

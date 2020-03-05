@@ -61,11 +61,10 @@ export function logout() {
     return action
 }
 
-
-export function editAccount() {
+export function editAccount(username, email) {
     let action = {
         type: EDIT_ACCOUNT,
-        payload: axios.post('/api/auth/edit')
+        payload: axios.post('/api/auth/edit', {username, email})
     }    
     
     return action
