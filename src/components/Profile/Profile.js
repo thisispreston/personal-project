@@ -89,7 +89,7 @@ function Profile (props) {
               ></input>
               <button
                 onClick={ async () => {
-                  await props.deleteAccount(cus_id, username, email)
+                  await props.deleteAccount(cus_id, username, password)
                 }}
               >
                 DELETE ACCOUNT

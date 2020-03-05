@@ -68,10 +68,10 @@ export function editAccount(cus_id, username, email) {
     return action
 }
 
-export function deleteAccount(cus_id, username, email) {
+export function deleteAccount(cus_id, username, password) {
     let action = {
         type: DELETE_ACCOUNT,
-        payload: axios.delete(`/api/auth/delete/${cus_id}`, {username, email})
+        payload: axios.delete(`/api/auth/delete/${cus_id}`, {data: {username, password}})
     }
 
     return action
@@ -111,9 +111,9 @@ export default function cusReducer(state = initialState, action) {
         case EDIT_ACCOUNT + '_REJECTED':
             return {...state, loading: false, error: true, errorMessage: action.payload.response.data}
         case DELETE_ACCOUNT + '_PENDING':
-            return {...state, loading: true,error: false}
+            return {...state, loading: true, error: false}
         case DELETE_ACCOUNT + '_FULFILLED':
-            return {...state, loading: false,customer: {}}
+            return {...state, loading: false, customer: {}}
         case DELETE_ACCOUNT + '_REJECTED':
             return {...state, loading: false, error: true, errorMessage: action.payload.response.data}
         case CLEAR_REDUCER:

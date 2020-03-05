@@ -63,24 +63,25 @@ module.exports = {
     }
   },
   delete: async (req, res) => {
-    console.log(chalk.red("hit delete"), req.params)
+    console.log(chalk.red("hit delete"), req.params, req.body)
     const db = req.app.get("db").auth
     const { username, password } = req.body
     const { id } = req.params
-
+    
     let cus = await db.check_cus(username)
     cus = cus[0]
     if (!cus) {
       return res.status(404).send("Username not found")
     }
-
+    
     const authenticated = bcrypt.compareSync(password, cus.password)
+    console.log(authenticated)
     if (authenticated) {
       delete cus.password
       await db.delete_cus(id)
       return res.sendStatus(200);
     } else {
-      return res.sendStatus(500);
+      return res.status(500).send("Unable to delete account information. Please try again.")
     }
   },
   logout: (req, res) => {
