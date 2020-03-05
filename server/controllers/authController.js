@@ -66,7 +66,7 @@ module.exports = {
     console.log(chalk.red("hit delete"), req.params)
     const db = req.app.get("db").auth
     const { username, password } = req.body
-    const { cus_id } = req.params
+    const { id } = req.params
 
     let cus = await db.check_cus(username)
     cus = cus[0]
@@ -77,7 +77,7 @@ module.exports = {
     const authenticated = bcrypt.compareSync(password, cus.password)
     if (authenticated) {
       delete cus.password
-      await db.delete_cus(cus_id)
+      await db.delete_cus(id)
       return res.sendStatus(200);
     } else {
       return res.sendStatus(500);

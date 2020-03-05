@@ -36,8 +36,8 @@ massive({
 app.post('/api/auth/login', checkCus, authCtrl.login)
 app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/logout', authCtrl.logout)
-app.delete('/api/auth/delete', authCtrl.delete)
 app.put('/api/auth/edit/:id', authCtrl.edit)
+app.delete('/api/auth/delete/:id', authCtrl.delete)
 
 app.get('/api/check', checkCus)
 

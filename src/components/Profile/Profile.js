@@ -4,8 +4,9 @@ import { login, deleteAccount, editAccount } from "../../redux/cusReducer";
 
 function Profile (props) {
   const [editing, setEditing] = useState(false);
-  // const [deleting, setDeleting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [username, setUsername] = useState(props.customer.username);
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState(props.customer.email);
 
   const { cus_id } = props.customer
@@ -50,6 +51,51 @@ function Profile (props) {
               </button>
               <button
                 onClick={() => setEditing(false)}
+              >
+                CANCEL
+              </button>
+            </form>
+          )
+        }
+      </div>
+      <div className="deletingCard">
+        {
+          (deleting === false) ? (
+            <div>
+              <button
+                onClick={() => setDeleting(true)}
+              >
+                DELETE ACCOUNT
+              </button>
+            </div>
+          ):(
+            <form
+              onSubmit={ async (e) => {
+                e.preventDefault()
+                await props.deleteAccount(cus_id, username, password)
+              }}
+            >
+              <input 
+                type="text"
+                value={username}
+                placeholder="enter your username"
+                onChange={e => setUsername(e.target.value)}
+              ></input>
+              <input 
+                type="password" 
+                value={password} 
+                placeholder="enter your password" 
+                onChange={e => setPassword(e.target.value)}
+              ></input>
+              <button
+                onClick={ async () => {
+                  await props.deleteAccount(cus_id, username, email)
+                }}
+              >
+                DELETE ACCOUNT
+              </button>
+              <button
+                onClick={() => setDeleting(false)}
               >
                 CANCEL
               </button>

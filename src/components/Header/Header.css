@@ -1,0 +1,24 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  background-color: #fad398;
+  opacity: .5;
+  position: relative;
+  color: #3486aa;
+}
+
+a {
+  color: #3486aa;
+}
+
+.header:hover {
+  opacity: .65;
+}
+
+.logout:hover {
+  opacity: 8;
+}
+
+a:hover {
+  opacity: 8;
+}

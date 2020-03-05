@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { connect } from "react-redux"
 import { withRouter, Redirect } from 'react-router-dom'
 import { login, register } from "../../redux/cusReducer"
+import './Landing.css'
 
 function Landing (props) {
   const [registered, setRegistered] = useState(true)
@@ -23,7 +24,7 @@ function Landing (props) {
   return (
     <div className="landing">
       <div
-        className="companyInfo"
+        className="company-info"
       >
         <p>
           ARTSY FARTSY: We love to get artists' work sold to those looking for simple pdf files.

@@ -68,11 +68,11 @@ export function editAccount(cus_id, username, email) {
     return action
 }
 
-export function deleteAccount() {
+export function deleteAccount(cus_id, username, email) {
     let action = {
         type: DELETE_ACCOUNT,
-        payload: axios.post('/api/auth/delete')
-    }    
+        payload: axios.delete(`/api/auth/delete/${cus_id}`, {username, email})
+    }
 
     return action
 }
