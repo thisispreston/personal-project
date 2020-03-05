@@ -3,7 +3,6 @@ const chalk = require("chalk");
 
 module.exports = {
   login: async (req, res) => {
-    console.log(chalk.red("hit login"), req.body);
     const db = req.app.get("db").auth;
     const { username, password } = req.body;
 
@@ -23,7 +22,6 @@ module.exports = {
     }
   },
   register: async (req, res) => {
-    console.log(chalk.red("hit register", req.body));
     const db = req.app.get("db").auth;
     const { username, email, password } = req.body;
 
@@ -46,22 +44,28 @@ module.exports = {
     }
   },
   edit: async (req, res) => {
-    console.log(chalk.red("hit edit", req.body));
     const db = req.app.get("db").auth;
     const { username, email } = req.body;
-    const { cus_id } = req.params
+    const { id } = req.params
 
-    try {
-      let editedCus = await db.edit_cus({ cus_id, username, email })
-      editedCus = editedCus[0];
-      req.session.customer = editedCus;
-      return res.status(202).send(req.session.customer);
-    } catch (err) {
-      return res.sendStatus(500);
+    let cus = await db.check_cus(username);
+    cus = cus[0]
+    console.log(cus)
+    if (cus.username) {
+        return res.status(409).send("Username already exists.")
+    }
+
+    let editedCus = await db.edit_cus({ id, username, email })
+    editedCus = editedCus[0]
+    if (editedCus) {
+      req.session.customer = editedCus
+      return res.status(202).send(req.session.customer)
+    } else {
+      return res.status(500).send("Unable to edit account information.")
     }
   },
   delete: async (req, res) => {
-    console.log(chalk.red("hit delete", req.params))
+    console.log(chalk.red("hit delete"), req.params)
     const db = req.app.get("db").auth
     const { username, password } = req.body
     const { cus_id } = req.params

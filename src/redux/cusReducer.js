@@ -59,10 +59,10 @@ export function logout() {
     return action
 }
 
-export function editAccount(username, email) {
+export function editAccount(cus_id, username, email) {
     let action = {
         type: EDIT_ACCOUNT,
-        payload: axios.post('/api/auth/edit', {username, email})
+        payload: axios.put(`/api/auth/edit/${cus_id}`, {username, email})
     }    
     
     return action
@@ -115,7 +115,7 @@ export default function cusReducer(state = initialState, action) {
         case DELETE_ACCOUNT + '_FULFILLED':
             return {...state, loading: false,customer: {}}
         case DELETE_ACCOUNT + '_REJECTED':
-            return {...state, loading: false,error: true, errorMessage: action.payload.response.data}
+            return {...state, loading: false, error: true, errorMessage: action.payload.response.data}
         case CLEAR_REDUCER:
             return {...state, ...initialState}
         default:

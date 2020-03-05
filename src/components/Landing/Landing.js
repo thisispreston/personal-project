@@ -1,20 +1,23 @@
 import React, {useState} from "react"
 import { connect } from "react-redux"
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { login, register } from "../../redux/cusReducer"
-import Errors from '../Errors'
 
 function Landing (props) {
   const [registered, setRegistered] = useState(true)
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  
   const login = async () => {
     await props.login(username, password)
     if (props.customer) {
       props.history.push(`/shop`)
     }
+  }
+  
+  if (props.customer.username && props.location.pathname === "/") {
+    return <Redirect to="/shop" />
   }
 
   return (
@@ -101,7 +104,6 @@ function Landing (props) {
           </form>
         </div>
       )}
-      <Errors />
     </div>
   )
 }

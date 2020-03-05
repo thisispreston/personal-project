@@ -1,6 +1,7 @@
 UPDATE customers
-  SET username = ${username},
-  SET email = ${email}
-  WHERE cus_id = ${cus_id}
+  SET
+    username = ${username},
+    email = ${email}
+  WHERE cus_id = ${id}
 RETURNING cus_id, email, username
 ;

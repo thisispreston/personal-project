@@ -1,11 +1,11 @@
 import React from 'react';
 import routes from './routes'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {checkCus} from './redux/cusReducer'
-import {Redirect} from 'react-router-dom'
 import Header from './components/Header/Header'
 import './App.css';
+import Errors from "./components/Errors"
 
 class App extends React.Component {
 
@@ -22,6 +22,7 @@ class App extends React.Component {
       <div className={`App`}>
         <Header />
         {routes}
+        <Errors />
       </div>
     )
   }
