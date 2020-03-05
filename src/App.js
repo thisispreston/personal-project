@@ -17,9 +17,6 @@ class App extends React.Component {
     if (!this.props.customer.username && this.props.location.pathname !== "/") {
       return <Redirect to="/" />
     }
-    if (this.props.customer.username) {
-      return <Redirect to="/shop" />
-    }
 
     return (
       <div className={`App`}>

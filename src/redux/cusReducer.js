@@ -43,12 +43,10 @@ export function register(username, email, password) {
 }
 
 export function login(username, password) {
-
     let action = {
         type: LOGIN,
         payload: axios.post(`/api/auth/login`, {username, password})
     }
-
     return action
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../redux/cusReducer";
@@ -20,7 +21,10 @@ function Header (props) {
         ARTSY FARTSY
       </Link>
       <h2
-        onClick={props.logout}
+        onClick={() => {
+          props.logout()
+          props.history.push(`/`)
+        }}
       >
         Logout
       </h2>
@@ -28,4 +32,4 @@ function Header (props) {
   )
 }
 
-export default connect(null, {logout})(Header);
+export default connect(null, {logout})(withRouter(Header));

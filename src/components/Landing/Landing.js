@@ -1,12 +1,21 @@
 import React, {useState} from "react"
 import { connect } from "react-redux"
+import { withRouter } from 'react-router-dom'
 import { login, register } from "../../redux/cusReducer"
+import Errors from '../Errors'
 
 function Landing (props) {
   const [registered, setRegistered] = useState(true)
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const login = async () => {
+    await props.login(username, password)
+    if (props.customer) {
+      props.history.push(`/shop`)
+    }
+  }
 
   return (
     <div className="landing">
@@ -22,7 +31,7 @@ function Landing (props) {
           <form
             onSubmit={e => {
               e.preventDefault()
-              props.login(username, password)
+              login()
             }}
           >
             <input 
@@ -92,14 +101,20 @@ function Landing (props) {
           </form>
         </div>
       )}
-      {/* <Errors /> */}
+      <Errors />
     </div>
   )
 }
+
+const mapStateToProps = reduxState => {
+  return {
+    customer: reduxState.customer
+  };
+};
 
 const mapDispatchToProps = {
   login,
   register
 };
 
-export default connect(null, mapDispatchToProps)(Landing)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing))
