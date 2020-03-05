@@ -12,97 +12,100 @@ function Profile (props) {
   const { cus_id } = props.customer
   return (
     <div className="profile">
-      <div className="editingCard">
-        {
-          (editing === false) ? (
-            <div>
-              <button
-                onClick={() => setEditing(true)}
-              >
-                EDIT ACCOUNT
-              </button>
-            </div>
-          ):(
-            <form
-              onSubmit={ async (e) => {
-                e.preventDefault()
-                await props.editAccount(cus_id, username, email)
-              }}
-            >
-              <input 
-                type="text"
-                value={username}
-                placeholder="enter a username"
-                onChange={e => setUsername(e.target.value)}
-              ></input>
-              <input 
-                type="email" 
-                value={email} 
-                placeholder="enter your email" 
-                onChange={e => setEmail(e.target.value)}
-              ></input>
-              <button
-                onClick={ async () => {
+      <div classname='profile-card'>
+        <h1 className='profile-info'>
+          Username: {username}
+          Email: {email}
+        </h1>
+        <div className="editingCard">
+          {
+            (editing === false) ? (
+              <div>
+                <button
+                  onClick={() => setEditing(true)}
+                >
+                  EDIT ACCOUNT
+                </button>
+              </div>
+            ):(
+              <form
+                onSubmit={ async (e) => {
+                  e.preventDefault()
                   await props.editAccount(cus_id, username, email)
                   setEditing(false)
                 }}
               >
-                SAVE CHANGES
-              </button>
-              <button
-                onClick={() => setEditing(false)}
-              >
-                CANCEL
-              </button>
-            </form>
-          )
-        }
-      </div>
-      <div className="deletingCard">
-        {
-          (deleting === false) ? (
-            <div>
-              <button
-                onClick={() => setDeleting(true)}
-              >
-                DELETE ACCOUNT
-              </button>
-            </div>
-          ):(
-            <form
-              onSubmit={ async (e) => {
-                e.preventDefault()
-                await props.deleteAccount(cus_id, username, password)
-              }}
-            >
-              <input 
-                type="text"
-                value={username}
-                placeholder="enter your username"
-                onChange={e => setUsername(e.target.value)}
-              ></input>
-              <input 
-                type="password" 
-                value={password} 
-                placeholder="enter your password" 
-                onChange={e => setPassword(e.target.value)}
-              ></input>
-              <button
-                onClick={ async () => {
+                <input 
+                  type="text"
+                  value={username}
+                  placeholder="enter a username"
+                  onChange={e => setUsername(e.target.value)}
+                ></input>
+                <input 
+                  type="email" 
+                  value={email} 
+                  placeholder="enter your email" 
+                  onChange={e => setEmail(e.target.value)}
+                ></input>
+                <button
+                  type="submit"
+                >
+                  SAVE CHANGES
+                </button>
+                <button
+                  onClick={() => setEditing(false)}
+                >
+                  CANCEL
+                </button>
+              </form>
+            )
+          }
+        </div>
+        <div className="deletingCard">
+          {
+            (deleting === false) ? (
+              <div>
+                <button
+                  onClick={() => setDeleting(true)}
+                >
+                  DELETE ACCOUNT
+                </button>
+              </div>
+            ):(
+              <form
+                onSubmit={ async (e) => {
+                  e.preventDefault()
                   await props.deleteAccount(cus_id, username, password)
                 }}
               >
-                DELETE ACCOUNT
-              </button>
-              <button
-                onClick={() => setDeleting(false)}
-              >
-                CANCEL
-              </button>
-            </form>
-          )
-        }
+                <input 
+                  type="text"
+                  value={username}
+                  placeholder="enter your username"
+                  onChange={e => setUsername(e.target.value)}
+                ></input>
+                <input 
+                  type="password" 
+                  value={password} 
+                  placeholder="enter your password" 
+                  onChange={e => setPassword(e.target.value)}
+                ></input>
+                <button
+                  type="submit"
+                >
+                  DELETE ACCOUNT
+                </button>
+                <button
+                  onClick={() => setDeleting(false)}
+                >
+                  CANCEL
+                </button>
+              </form>
+            )
+          }
+        </div>
       </div>
+      <div className="orders"></div>
     </div>
   )
 }

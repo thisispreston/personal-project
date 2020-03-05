@@ -31,7 +31,7 @@ function Landing (props) {
         </p>
       </div>
       {registered ? (
-        <div>
+        <div className='login-card'>
           <form
             onSubmit={e => {
               e.preventDefault()

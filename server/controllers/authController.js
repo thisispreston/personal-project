@@ -49,7 +49,7 @@ module.exports = {
     const { id } = req.params
 
     let cus = await db.check_cus(username);
-    if (cus[0]) {
+    if (cus[0] && cus[0].username !== username) {
         return res.status(409).send("Username already exists.")
     }
 
