@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import "./Shop.css"
 // import {Link, Route} from 'react-router-dom'
  
 class Shop extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      products: [],
+    }
   }
 
   componentDidMount() {
@@ -33,11 +36,35 @@ class Shop extends Component {
   // }
 
   render () {
-    //map over products and render elements for each
+    let productCards = this.state.products.map((e, i) => {
+      return (
+        <div
+          key={i}
+          className='product-card'
+          {...e}
+        >
+          <img 
+            alt='product'
+            className='product-img'
+            src={e.img}
+          />
+          <p
+            className='price'
+          >
+            ${e.price}
+          </p>
+          <p
+            className='product-name'
+          >
+            {e.name}
+          </p>
+        </div>
+      )
+    })
 
     return (
       <div className="shop">
-        Shop
+        {productCards}
       </div>
     )
   }

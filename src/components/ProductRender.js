@@ -14,7 +14,7 @@ export default function () {
         className='product' 
         key={i}
       >
-        <img src={product} />
+        <img src='/assets/' />
         {product}
       </div>
     )

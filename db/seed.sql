@@ -7,11 +7,12 @@ CREATE TABLE customers (
 
 CREATE TABLE products (
     prod_id SERIAL PRIMARY KEY,
-    img TEXT,
+    img VARCHAR(250),
     price INT,
     name VARCHAR(50),
     description VARCHAR(250),
-    category VARCHAR(25)
+    category VARCHAR(25),
+    artist_name VARCHAR(50)
 );
 
 CREATE TABLE cart (
@@ -19,3 +20,59 @@ CREATE TABLE cart (
     cus_id INT REFERENCES customers(cus_id),
     prod_id INT REFERENCES products(prod_id)
 );
+
+INSERT INTO products (
+    img,
+    price,
+    name,
+    category,
+    artist_name
+) VALUES (
+    '/assets/product-animals-01.jpg',
+    15,
+    'Puppy',
+    'Animals',
+    'ractapopulous'
+)
+INSERT INTO products (
+    img,
+    price,
+    name,
+    category,
+    artist_name
+) VALUES (
+    '/assets/product-animals-02.jpg',
+    18,
+    'Owl',
+    'Animals',
+    'ractapopulous'
+),
+(
+    '/assets/product-animals-03.jpg',
+    20,
+    'Horse',
+    'Animals',
+    'avalonbears'
+),
+(
+    '/assets/product-animals-04.jpg',
+    20,
+    'Hummingbird',
+    'Animals',
+    'ractapopulous'
+),
+(
+    '/assets/product-animals-05.jpg',
+    30,
+    'Japanese Hawk',
+    'Animals',
+    'Prawny'
+),
+(
+    '/assets/product-animals-06.jpg',
+    22,
+    'Moth',
+    'Animals',
+    'Nika_Akin'
+)
+;
