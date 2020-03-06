@@ -10,7 +10,8 @@ CREATE TABLE products (
     img TEXT,
     price INT,
     name VARCHAR(50),
-    description VARCHAR(250)
+    description VARCHAR(250),
+    category VARCHAR(25)
 );
 
 CREATE TABLE cart (

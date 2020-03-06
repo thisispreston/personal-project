@@ -10,18 +10,23 @@ function Header (props) {
   return (
     <div className="header">
       <div className='header-buttons'>
-        <Link to='/shop'>
-          SHOP
-        </Link>
-        <Link to='/cart'>
-          CART
-        </Link>
-        <Link to='/profile'>
-          PROFILE
-        </Link>
-        <Link to='/'>
+        <div className='nav-buttons'>
+          <Link to='/'>
+            HOME
+          </Link>
+          <Link to='/shop'>
+            SHOP
+          </Link>
+          <Link to='/cart'>
+            CART
+          </Link>
+          <Link to='/profile'>
+            PROFILE
+          </Link>
+        </div>
+        <h1 className='website-name'>
           ARTSY FARTSY
-        </Link>
+        </h1>
         <h2
           className='logout'
           onClick={() => {
