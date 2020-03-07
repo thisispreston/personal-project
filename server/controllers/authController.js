@@ -63,7 +63,7 @@ module.exports = {
     }
   },
   delete: async (req, res) => {
-    console.log(chalk.red("hit delete"), req.params, req.body)
+    console.log(chalk.red("hit delete"))
     const db = req.app.get("db").auth
     const { username, password } = req.body
     const { id } = req.params

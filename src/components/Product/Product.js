@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { connect } from "react-redux"
 import { withRouter, Link } from 'react-router-dom'
 import axios from "axios"
+import { toast } from 'react-toastify'
 import './Product.css'
 
 function Product (props) {
@@ -29,9 +30,10 @@ function Product (props) {
     await axios
       .post(`/api/cart/${props.cus_id}`, {prod_id})
       .then(res => {
-        if (res.data === 'Created') {
-          props.history.push(`/shop`)
-        }
+        toast.success('Item added to cart.', {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+        props.history.push(`/shop`)
       })
       .catch(err => {
       console.log(err)
