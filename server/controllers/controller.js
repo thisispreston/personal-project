@@ -12,6 +12,18 @@ module.exports = {
       return res.sendStatus(500)
     }
   },
+  getOneProduct: async (req, res) => {
+    console.log(chalk.red("hit getOneProduct"))
+    const { id } = req.params
+    const db = req.app.get("db")
+    
+    try {
+      let product = await db.get_product(id)
+      return res.status(200).send(product)
+    } catch (err) {
+      return res.sendStatus(500)
+    }
+  },
   getCart: async (req, res) => {
     console.log(chalk.red("hit getCart", req.params))
     const { cus_id } = req.params
@@ -25,14 +37,13 @@ module.exports = {
     }
   },
   addToCart: (req, res) => {
-    console.log(chalk.red("hit editCart", req.params, req.body))
-    const { cus_id } = req.params
-    const { product_id } = req.body
+    console.log(chalk.red("hit editCart"))
+    const { id } = req.params
+    const { prod_id } = req.body
     const db = req.app.get("db")
 
-    // MAY NEED AN AWAIT HERE. BE AWARE
     try {
-      db.add_to_cart([cus_id, product_id])
+      db.add_to_cart([id, prod_id])
       return res.sendStatus(201)
     } catch (err) {
       return res.sendStatus(500)

@@ -105,7 +105,7 @@ function Profile (props) {
           }
         </div>
       </div>
-      <div className="orders"></div>
+      {/* <div className="orders"></div> */}
     </div>
   )
 }

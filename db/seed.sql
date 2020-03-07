@@ -17,8 +17,8 @@ CREATE TABLE products (
 
 CREATE TABLE cart (
     cart_id SERIAL PRIMARY KEY,
-    cus_id INT REFERENCES customers(cus_id),
-    prod_id INT REFERENCES products(prod_id)
+    cus_id INT REFERENCES customers(cus_id) NOT NULL,
+    prod_id INT REFERENCES products(prod_id) NOT NULL
 );
 
 INSERT INTO products (

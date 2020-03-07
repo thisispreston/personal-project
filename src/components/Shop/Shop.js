@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import "./Shop.css"
-// import {Link, Route} from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
  
 class Shop extends Component {
   constructor(props) {
@@ -26,39 +26,40 @@ class Shop extends Component {
     }) 
   }
 
-  // viewProduct = () => {
-  //   reroute to product page
-  // }
-
-  // addToCart = async () => {
-  //   await axios
-  //   move back to shop
-  // }
+  addToCart = async (id) => {
+    await axios.post(`/api/cart/${id}`).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    }) 
+  }
 
   render () {
     let productCards = this.state.products.map((e, i) => {
       return (
-        <div
-          key={i}
-          className='product-card'
-          {...e}
-        >
-          <img 
-            alt='product'
-            className='product-img'
-            src={e.img}
-          />
-          <p
-            className='price'
+        <Link to={`/product/${e.prod_id}`} >
+          <div
+            key={i}
+            className='product-card'
+            {...e}
           >
-            ${e.price}
-          </p>
-          <p
-            className='product-name'
-          >
-            {e.name}
-          </p>
-        </div>
+            <img 
+              alt='product'
+              className='product-img'
+              src={e.img}
+            />
+            <p
+              className='price'
+            >
+              ${e.price}
+            </p>
+            <p
+              className='product-name'
+            >
+              {e.name}
+            </p>
+          </div>
+        </Link>
       )
     })
 
@@ -70,5 +71,5 @@ class Shop extends Component {
   }
 }
 
-export default Shop
+export default withRouter(Shop)
 

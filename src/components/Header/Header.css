@@ -1,8 +1,7 @@
 .header {
   height: 10vh;
   width: 100%;
-  background-color: #fad398;
-  opacity: .5;
+  background: rgb(225,134,68, .45);
   position: relative;
   color: #3486aa;
 }
@@ -18,7 +17,7 @@ a {
 }
 
 .header:hover {
-  opacity: .65;
+  background: rgb(225,134,68, .3);
 }
 
 .logout:hover {

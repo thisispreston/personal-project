@@ -1,13 +1,77 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useState} from "react"
+import { connect } from "react-redux"
+import { withRouter, Link } from 'react-router-dom'
+import axios from "axios"
+import './Product.css'
 
 function Product (props) {
-  // const { prod_id, img, price, name, description, addToCart } = props
+  const [prod_id, setProd_id] = useState(+props.match.params.id)
+  const [img, setImg] = useState("")
+  const [price, setPrice] = useState(null)
+  const [name, setName] = useState("")
+  const [category, setCategory] = useState("")
+  const [artistName, setArtistName] = useState("")
+
+  // const { prod_id, img, price, name, category, addToCart } = props
+
+  axios.get(`/api/product/${prod_id}`).then(res => {
+    const { img, price, name, category, artist_name } = res.data[0]
+    setImg(img)
+    setPrice(price)
+    setName(name)
+    setCategory(category)
+    setArtistName(artist_name)
+  }).catch(err => {
+    console.log(err)
+  }) 
+
+  let addToCart = async () => {
+    await axios
+      .post(`/api/cart/${props.cus_id}`, {prod_id})
+      .then(res => {
+        if (res.data === 'Created') {
+          props.history.push(`/shop`)
+        }
+      })
+      .catch(err => {
+      console.log(err)
+    }) 
+  }
 
   return (
     //onClick= addToCart(cus_id)
     <div className="product">
-      Product
+      <img 
+        className='product-image'
+        alt='product'
+        src={img}
+      />
+      <div className='info-card'>
+        <h1
+          className='product-name'
+        >
+          {name}
+        </h1>
+        <Link to={`/category/${category}`} >
+          {category}
+        </Link>
+        <h3
+          className='product-artist'
+        >
+          {artistName}
+        </h3>
+        <p
+          className='product-price'
+        >
+          {price}
+        </p>
+        <button
+          onClick={() => addToCart()}
+        >
+          ADD TO CART
+        </button>
+      </div>
+      {/* <div className='reviews'></div> */}
     </div>
   );
 }
@@ -15,8 +79,8 @@ function Product (props) {
 // MAY OR MAY NOT NEED CUSReducer KEP AN EYE ON THIS
 const mapStateToProps = reduxState => {
   return {
-    cus_id: reduxState.cusReducer.customer.cus_id
+    cus_id: reduxState.customer.cus_id
   };
 };
 
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps)(withRouter(Product));

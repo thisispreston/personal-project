@@ -1,2 +1,17 @@
+.product {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
- /* margin-top: 50px; */
+.product-image {
+  height: 400px;
+  width: 400px;
+}
+
+.info-card {
+  height: 300px;
+  width: 500px;
+}
+
