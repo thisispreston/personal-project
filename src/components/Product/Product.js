@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { connect } from "react-redux"
 import { withRouter, Link } from 'react-router-dom'
 import axios from "axios"
@@ -6,25 +6,28 @@ import { toast } from 'react-toastify'
 import './Product.css'
 
 function Product (props) {
-  const [prod_id, setProd_id] = useState(+props.match.params.id)
   const [img, setImg] = useState("")
   const [price, setPrice] = useState(null)
   const [name, setName] = useState("")
   const [category, setCategory] = useState("")
   const [artistName, setArtistName] = useState("")
 
-  // const { prod_id, img, price, name, category, addToCart } = props
+  const prod_id = +props.match.params.id
 
-  axios.get(`/api/product/${prod_id}`).then(res => {
-    const { img, price, name, category, artist_name } = res.data[0]
-    setImg(img)
-    setPrice(price)
-    setName(name)
-    setCategory(category)
-    setArtistName(artist_name)
-  }).catch(err => {
-    console.log(err)
-  }) 
+  // const { prod_id, img, price, name, category, addToCart } = props
+  useEffect(() => {
+    axios.get(`/api/product/${prod_id}`).then(res => {
+      const { img, price, name, category, artist_name } = res.data[0]
+      setImg(img)
+      setPrice(price)
+      setName(name)
+      setCategory(category)
+      setArtistName(artist_name)
+    }).catch(err => {
+      console.log(err)
+    }) 
+  },[prod_id])
+  // Fill the array with variables to watch; the empty array means it will fire once
 
   let addToCart = async () => {
     await axios
@@ -78,11 +81,11 @@ function Product (props) {
   );
 }
 
-// MAY OR MAY NOT NEED CUSReducer KEP AN EYE ON THIS
+// MAY OR MAY NOT NEED CUSReducer KEEP AN EYE ON THIS
 const mapStateToProps = reduxState => {
   return {
     cus_id: reduxState.customer.cus_id
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(withRouter(Product));

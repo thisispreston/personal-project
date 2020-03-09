@@ -25,12 +25,12 @@ module.exports = {
     }
   },
   getCart: async (req, res) => {
-    console.log(chalk.red("hit getCart", req.params))
-    const { cus_id } = req.params
+    console.log(chalk.red("hit getCart"), req.params)
+    const { id } = req.params
     const db = req.app.get("db")
     
     try {
-      let cart = await db.get_cart(cus_id)
+      let cart = await db.get_cart(id)
       return res.status(200).send(cart)
     } catch (err) {
       return res.sendStatus(500)

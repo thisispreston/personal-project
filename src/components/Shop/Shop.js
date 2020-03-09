@@ -37,9 +37,11 @@ class Shop extends Component {
   render () {
     let productCards = this.state.products.map((e, i) => {
       return (
-        <Link to={`/product/${e.prod_id}`} >
+        <Link 
+          to={`/product/${e.prod_id}`} 
+          key={i}
+        >
           <div
-            key={i}
             className='product-card'
             {...e}
           >
