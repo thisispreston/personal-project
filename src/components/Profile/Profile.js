@@ -12,7 +12,7 @@ function Profile (props) {
   const { cus_id } = props.customer
   return (
     <div className="profile">
-      <div classname='profile-card'>
+      <div className='profile-card'>
         <h1 className='profile-info'>
           Username: {username}
           Email: {email}

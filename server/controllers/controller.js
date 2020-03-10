@@ -77,10 +77,10 @@ module.exports = {
     }
   },
   placeOrder:(req,res)=>{
-    // const db = req.app.get('db')
-    const {token:{id}, total} = req.body;
+    const db = req.app.get('db')
+    const {token:{id}, total, cart} = req.body;
 
-    console.log(id, total, stripe)
+    console.log(cart)
 
     stripe.charges.create(
       {

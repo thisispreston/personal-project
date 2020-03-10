@@ -87,13 +87,12 @@ class Cart extends Component {
   placeOrder = (token) => {
     let { total } = this.state
     total *= 100
-    console.log(token, total)
     token.card = void 0
     axios
       .post('/api/payment', { token, total })
       .then(res => {
         console.log(res)
-        toast.info(`You paid Artsy Fartsy ${total} for your art!`, {
+        toast.info(`Thank you for purchasing our art!`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
       })
@@ -175,25 +174,25 @@ class Cart extends Component {
             style={{display:'flex',flexDirection:'column', alignItems:'center', marginTop:'50px'}}
           >
             <StripeCheckout
-              name='Place Order' //header
-              image='/assets/LOGO.jpg'
+              name='Artsy Fartsy Checkout' //header
+              image='/assets/LOGO.jpg' // image at top
               description='Enter your payment information here.' //subtitle - beneath header
               stripeKey={process.env.REACT_APP_STRIPE_KEY} //public key not secret key
               token={this.placeOrder} //fires the call back
-              amount={this.state.total} //this will be in dollars
-              currency="USD" 
+              amount={this.state.total * 100} //this will be in cents
+              currency="USD"
               // image={imageUrl} // the pop-in header image (default none)
               // ComponentClass="div" //initial default button styling on block scope (defaults to span)
               panelLabel="Submit Payment" //text on the submit button
               locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
               opened={this.onOpened} //fires cb when stripe is opened
               closed={this.onClosed} //fires cb when stripe is closed
-              allowRememberMe // "Remember Me" option (default true)
+              allowRememberMe={false} // "Remember Me" option (default true)
               billingAddress={false}
               shippingAddress={true} //you can collect their address
               zipCode={false}
             >
-              {/* <button>Checkout</button> */}
+              <button>Checkout</button>
             </StripeCheckout>
           </div>
         </div>
