@@ -40,7 +40,7 @@ function Product (props) {
       })
       .catch(err => {
       console.log(err)
-    }) 
+      }) 
   }
 
   return (
@@ -68,7 +68,7 @@ function Product (props) {
         <p
           className='product-price'
         >
-          {price}
+          ${price}
         </p>
         <button
           onClick={() => addToCart()}

@@ -1,4 +1,5 @@
 const chalk = require("chalk")
+const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
 module.exports = {
   getProducts: async (req, res) => {
@@ -37,7 +38,7 @@ module.exports = {
     }
   },
   addToCart: (req, res) => {
-    console.log(chalk.red("hit editCart"))
+    console.log(chalk.red("hit addToCart"))
     const { id } = req.params
     const { prod_id } = req.body
     const db = req.app.get("db")
@@ -49,31 +50,56 @@ module.exports = {
       return res.sendStatus(500)
     }
   },
-  deleteItem: (req, res) => {
-    console.log(chalk.red("hit deleteItem"), req.params)
+  deleteItem: async (req, res) => {
+    console.log(chalk.red("hit deleteItem"))
     const { id } = req.params
     const db = req.app.get("db")
 
     // MAY NEED AN AWAIT HERE. BE AWARE
     try {
-      db.delete_item([id])
+      await db.delete_item([id])
       return res.sendStatus(200)
     } catch (err) {
       return res.sendStatus(500)
     }
   },
-  clearCart: (req, res) => {
-    console.log(chalk.red("hit clearCart", req.params))
-    const { cus_id } = req.params
+  clearCart: async (req, res) => {
+    console.log(chalk.red("hit clearCart"), req.params)
+    const { id } = req.params
     const db = req.app.get("db")
 
     // MAY NEED AN AWAIT HERE. BE AWARE
     try {
-      db.clear_cart([cus_id])
+      await db.clear_cart([id])
       return res.sendStatus(200)
     } catch (err) {
       return res.sendStatus(500)
     }
+  },
+  placeOrder:(req,res)=>{
+    // const db = req.app.get('db')
+    const {token:{id}, total} = req.body;
+
+    console.log(id, total, stripe)
+
+    stripe.charges.create(
+      {
+        amount: total,
+        currency: 'usd',
+        source: id,
+        description: 'Test Charge'
+      },
+      (err, charge) => {
+        if (err) {
+          console.log(err)
+          return res.status(500).send(err)
+        } else {
+          console.log('Successful payment', charge)
+          //this is where you would do something with that purchase (i.e. store that information to your db)
+          return res.status(200).send(charge)
+        }
+      }
+    )
   },
 }
 

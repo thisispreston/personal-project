@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { withRouter, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import StripeCheckout from 'react-stripe-checkout'
 import './Cart.css'
 
 class Cart extends Component {
@@ -19,6 +20,7 @@ class Cart extends Component {
     this.getCart()
   }
 
+// MANIPULATING CART ITEMS:
   getCart = async () => {
     await axios
       .get(`/api/cart/${this.props.cus_id}`)
@@ -40,17 +42,12 @@ class Cart extends Component {
     })
   }
 
-  // placeOrder = () => {
-  //   axios
-  // }
-
   removeItem = (id) => {
     axios
       .delete(`/api/cart/item/${id}`)
       .then(res => {
-        console.log(res)
         if (res.status === 200) {
-          toast.success('Item removed from cart.', {
+          toast.info('Item removed from cart.', {
             position: toast.POSITION.BOTTOM_RIGHT
           })
           this.getCart()
@@ -61,9 +58,52 @@ class Cart extends Component {
       })
   }
 
-  // clearCart = () => {
-  //   axios
-  // }
+  clearCart = (id) => {
+    axios
+      .delete(`/api/cart/${id}`)
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          toast.info('Your cart is cleared.', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+          this.props.history.push(`/shop`)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  // PLACING AN ORDER:
+  onOpened=()=>{
+    console.log('this is opened')
+  }
+
+  onClosed=()=>{
+    console.log('this is closed')
+  }
+
+  placeOrder = (token) => {
+    let { total } = this.state
+    total *= 100
+    console.log(token, total)
+    token.card = void 0
+    axios
+      .post('/api/payment', { token, total })
+      .then(res => {
+        console.log(res)
+        toast.info(`You paid Artsy Fartsy ${total} for your art!`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error(`Something went wrong with your order. Please try again.`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      })
+  }
 
   render() {
     let cartItems = this.state.cart.map((e, i) => {
@@ -109,9 +149,15 @@ class Cart extends Component {
         </div>
       )
     })
-    // console.log(this.state.cart)
+
     return (
       <div className='cart-page'>
+        <button
+          className='clear-cart'
+          onClick={() => this.clearCart(this.props.cus_id)}
+        >
+          CLEAR CART
+        </button>
         <div
           className='cart-items'
         >
@@ -123,13 +169,33 @@ class Cart extends Component {
           <p
             className='total'
           >
-            TOTAL: {this.state.total}
+            TOTAL: ${this.state.total}
           </p>
-          <button
-            className='order-button'
+          <div 
+            style={{display:'flex',flexDirection:'column', alignItems:'center', marginTop:'50px'}}
           >
-            PLACE ORDER
-          </button>
+            <StripeCheckout
+              name='Place Order' //header
+              image='/assets/LOGO.jpg'
+              description='Enter your payment information here.' //subtitle - beneath header
+              stripeKey={process.env.REACT_APP_STRIPE_KEY} //public key not secret key
+              token={this.placeOrder} //fires the call back
+              amount={this.state.total} //this will be in dollars
+              currency="USD" 
+              // image={imageUrl} // the pop-in header image (default none)
+              // ComponentClass="div" //initial default button styling on block scope (defaults to span)
+              panelLabel="Submit Payment" //text on the submit button
+              locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
+              opened={this.onOpened} //fires cb when stripe is opened
+              closed={this.onClosed} //fires cb when stripe is closed
+              allowRememberMe // "Remember Me" option (default true)
+              billingAddress={false}
+              shippingAddress={true} //you can collect their address
+              zipCode={false}
+            >
+              {/* <button>Checkout</button> */}
+            </StripeCheckout>
+          </div>
         </div>
       </div>
     )

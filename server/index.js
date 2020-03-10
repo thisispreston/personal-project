@@ -51,3 +51,5 @@ app.get('/api/cart/:id', ctrl.getCart)
 app.delete('/api/cart/item/:id', ctrl.deleteItem) //cart_id
 app.delete('/api/cart/:id', ctrl.clearCart) //cus_id
 
+app.post('/api/payment', ctrl.placeOrder)
+
