@@ -1,16 +1,23 @@
-.cart {
+.cart-page {
   height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-items {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
 }
 
-.product-card {
-  height: 225px;
-  width: 225px;
+.cart-item-card {
+  height: 125px;
+  width: 250px;
+  display: flex;
+  flex-direction: row;
 }
 
-.product-img {
-  height: 200px;
-  width: 200px;
+.item-img {
+  height: 100px;
+  width: 100px;
 }

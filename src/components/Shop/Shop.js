@@ -17,21 +17,26 @@ class Shop extends Component {
   }
 
   getProducts = () => {
-    axios.get('/api/products').then(res => {
-      this.setState({
-        products: res.data
+    axios
+      .get('/api/products').then(res => {
+        this.setState({
+          products: res.data
+        })
       })
-    }).catch(err => {
+      .catch(err => {
       console.log(err)
-    }) 
+      }) 
   }
 
   addToCart = async (id) => {
-    await axios.post(`/api/cart/${id}`).then(res => {
+    await axios
+      .post(`/api/cart/${id}`)
+      .then(res => {
       console.log(res)
-    }).catch(err => {
+      })
+      .catch(err => {
       console.log(err)
-    }) 
+      }) 
   }
 
   render () {

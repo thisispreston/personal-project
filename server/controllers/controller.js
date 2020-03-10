@@ -25,7 +25,7 @@ module.exports = {
     }
   },
   getCart: async (req, res) => {
-    console.log(chalk.red("hit getCart"), req.params)
+    console.log(chalk.red("hit getCart"))
     const { id } = req.params
     const db = req.app.get("db")
     
@@ -50,13 +50,13 @@ module.exports = {
     }
   },
   deleteItem: (req, res) => {
-    console.log(chalk.red("hit deleteItem", req.params))
-    const { cart_id } = req.params
+    console.log(chalk.red("hit deleteItem"), req.params)
+    const { id } = req.params
     const db = req.app.get("db")
 
     // MAY NEED AN AWAIT HERE. BE AWARE
     try {
-      db.delete_item([cart_id])
+      db.delete_item([id])
       return res.sendStatus(200)
     } catch (err) {
       return res.sendStatus(500)
