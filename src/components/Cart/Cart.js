@@ -85,11 +85,11 @@ class Cart extends Component {
   }
 
   placeOrder = (token) => {
-    let { total } = this.state
+    let { total, cart } = this.state
     total *= 100
     token.card = void 0
     axios
-      .post('/api/payment', { token, total })
+      .post(`/api/payment/${this.props.cus_id}`, { token, total, cart })
       .then(res => {
         console.log(res)
         toast.info(`Thank you for purchasing our art!`, {
@@ -192,7 +192,7 @@ class Cart extends Component {
               shippingAddress={true} //you can collect their address
               zipCode={false}
             >
-              <button>Checkout</button>
+              <button>CHECKOUT</button>
             </StripeCheckout>
           </div>
         </div>

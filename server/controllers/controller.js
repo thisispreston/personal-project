@@ -76,11 +76,17 @@ module.exports = {
       return res.sendStatus(500)
     }
   },
-  placeOrder:(req,res)=>{
+  placeOrder: (req,res) => {
+    console.log(chalk.red("hit placeOrder"))
+
     const db = req.app.get('db')
+    const cus_id = req.params.id
     const {token:{id}, total, cart} = req.body;
 
-    console.log(cart)
+    let product_ids = cart.map(e => {
+      return e.prod_id
+    })
+    console.log(product_ids)
 
     stripe.charges.create(
       {
@@ -89,17 +95,20 @@ module.exports = {
         source: id,
         description: 'Test Charge'
       },
-      (err, charge) => {
+      async (err, charge) => {
         if (err) {
           console.log(err)
           return res.status(500).send(err)
         } else {
-          console.log('Successful payment', charge)
-          //this is where you would do something with that purchase (i.e. store that information to your db)
+          console.log(chalk.blue("Order successful"))
+          let { fingerprint } = charge.source
+          let orderID = await db.orders([cus_id, total, fingerprint])
+          await db.orders_products([orderID, product_ids])
           return res.status(200).send(charge)
         }
       }
     )
   },
 }
+
 

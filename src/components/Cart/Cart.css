@@ -1,6 +1,6 @@
 .cart-page {
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   flex-direction: row;
 }

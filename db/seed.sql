@@ -76,3 +76,23 @@ INSERT INTO products (
     'Nika_Akin'
 )
 ;
+
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    cus_id INT REFERENCES customers(cus_id) NOT NULL,
+    order_total INT NOT NULL,
+    order_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    stripe_fingerprint VARCHAR(250)
+);
+
+-- CREATE TABLE order_products (
+--     o_p_id SERIAL PRIMARY KEY,
+--     order_id INT REFERENCES orders(order_id) NOT NULL,
+--     product_id INT REFERENCES products(prod_id) NOT NULL
+-- );
+
+CREATE TABLE order_products (
+    o_p_id SERIAL PRIMARY KEY,
+    order_id INT REFERENCES orders(order_id) NOT NULL,
+    cart TEXT []
+);
