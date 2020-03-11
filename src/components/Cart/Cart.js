@@ -95,6 +95,7 @@ class Cart extends Component {
         toast.info(`Thank you for purchasing our art!`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
+        this.clearCart(this.props.cus_id)
       })
       .catch(err => {
         console.log(err)

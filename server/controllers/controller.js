@@ -64,7 +64,7 @@ module.exports = {
     }
   },
   clearCart: async (req, res) => {
-    console.log(chalk.red("hit clearCart"), req.params)
+    console.log(chalk.red("hit clearCart"))
     const { id } = req.params
     const db = req.app.get("db")
 
@@ -98,8 +98,9 @@ module.exports = {
           console.log(chalk.blue("Order successful"))
           let { fingerprint } = charge.source
           let orderID = await db.orders([cus_id, total, fingerprint])
+          let { order_id } = orderID[0]
           await cart.map( e => {
-            db.orders_products([orderID, e.prod_id])
+            db.orders_products([order_id, e.prod_id])
           })
           return res.status(200).send(charge)
         }

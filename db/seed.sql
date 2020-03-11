@@ -85,7 +85,7 @@ CREATE TABLE orders (
     stripe_fingerprint VARCHAR(250)
 );
 
-CREATE TABLE order_products (
+CREATE TABLE orders_products (
     o_p_id SERIAL PRIMARY KEY,
     order_id INT REFERENCES orders(order_id) NOT NULL,
     prod_id INT REFERENCES products(prod_id) NOT NULL
