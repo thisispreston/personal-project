@@ -1,7 +1,7 @@
 INSERT INTO order_products (
   order_id,
-  cart
+  prod_id
 ) VALUES (
   $1,
-  ARRAY $2
+  $2
 );

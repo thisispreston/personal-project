@@ -83,11 +83,6 @@ module.exports = {
     const cus_id = req.params.id
     const {token:{id}, total, cart} = req.body;
 
-    let product_ids = cart.map(e => {
-      return e.prod_id
-    })
-    console.log(product_ids)
-
     stripe.charges.create(
       {
         amount: total,
@@ -103,7 +98,9 @@ module.exports = {
           console.log(chalk.blue("Order successful"))
           let { fingerprint } = charge.source
           let orderID = await db.orders([cus_id, total, fingerprint])
-          await db.orders_products([orderID, product_ids])
+          await cart.map( e => {
+            db.orders_products([orderID, e.prod_id])
+          })
           return res.status(200).send(charge)
         }
       }

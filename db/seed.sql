@@ -85,14 +85,8 @@ CREATE TABLE orders (
     stripe_fingerprint VARCHAR(250)
 );
 
--- CREATE TABLE order_products (
---     o_p_id SERIAL PRIMARY KEY,
---     order_id INT REFERENCES orders(order_id) NOT NULL,
---     product_id INT REFERENCES products(prod_id) NOT NULL
--- );
-
 CREATE TABLE order_products (
     o_p_id SERIAL PRIMARY KEY,
     order_id INT REFERENCES orders(order_id) NOT NULL,
-    cart TEXT []
+    prod_id INT REFERENCES products(prod_id) NOT NULL
 );
