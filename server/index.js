@@ -4,6 +4,7 @@ const express = require("express"),
   session = require("express-session"),
   ctrl = require("./controllers/controller")
   authCtrl = require("./controllers/authController"),
+  emailCtrl = require("./controllers/emailController")
   checkCus = require('./middleware/checkCus'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
@@ -53,3 +54,5 @@ app.delete('/api/cart/:id', ctrl.clearCart) //cus_id
 
 app.post('/api/payment/:id', ctrl.placeOrder)
 
+// NODEMAILER ENDPOINT
+app.post('api/mail/:id', emailCtrl.sendEmail)

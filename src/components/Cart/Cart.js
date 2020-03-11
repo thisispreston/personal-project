@@ -95,6 +95,7 @@ class Cart extends Component {
         toast.info(`Thank you for purchasing our art!`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
+        // this.sendConfirmation()
         this.clearCart(this.props.cus_id)
       })
       .catch(err => {
@@ -103,6 +104,12 @@ class Cart extends Component {
           position: toast.POSITION.BOTTOM_RIGHT
         })
       })
+  }
+
+  // NodeMailer:
+
+  sendConfirmation = () => {
+
   }
 
   render() {
@@ -188,6 +195,7 @@ class Cart extends Component {
               locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
               opened={this.onOpened} //fires cb when stripe is opened
               closed={this.onClosed} //fires cb when stripe is closed
+              email={this.props.email}
               allowRememberMe={false} // "Remember Me" option (default true)
               billingAddress={false}
               shippingAddress={true} //you can collect their address
@@ -204,7 +212,8 @@ class Cart extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    cus_id: reduxState.customer.cus_id
+    cus_id: reduxState.customer.cus_id,
+    email: reduxState.customer.email
   }
 }
 
