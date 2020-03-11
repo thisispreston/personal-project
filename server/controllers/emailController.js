@@ -7,7 +7,6 @@ module.exports = {
     const {id} = req.params
     const { email, username } = req.body
 
-    // Step 1
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -16,16 +15,24 @@ module.exports = {
         }
     })
 
-    let emailText = `Hello ${firstName}, here is the link to sign in: ${signUpURL}`
-    // Step 2
+    let emailText = `
+      Hello ${username}, 
+
+      Thank you for your purchase! Your order number is ${id} and will be shipped within the next twenty-four hours. We will send you another email as soon as your order is placed in the mail.
+
+      Thank you for supporting our art, 
+
+      Best Regards, 
+      Artsy Fartsy
+    `
+
     let mailOptions = {
         from: EMAIL,
         to: email,
-        subject: 'Update Certification',
+        subject: `Order #${id} Confirmation`,
         text: emailText
     }
 
-    // Step 3
     transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
             res.status(500).send('Error Occurred')

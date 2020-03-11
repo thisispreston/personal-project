@@ -24,7 +24,7 @@ class Cart extends Component {
   getCart = async () => {
     await axios
       .get(`/api/cart/${this.props.cus_id}`)
-      .then(res => {
+      .then( res => {
         this.setState({
           cart: res.data
         })
@@ -45,7 +45,7 @@ class Cart extends Component {
   removeItem = (id) => {
     axios
       .delete(`/api/cart/item/${id}`)
-      .then(res => {
+      .then( res => {
         if (res.status === 200) {
           toast.info('Item removed from cart.', {
             position: toast.POSITION.BOTTOM_RIGHT
@@ -61,10 +61,10 @@ class Cart extends Component {
   clearCart = (id) => {
     axios
       .delete(`/api/cart/${id}`)
-      .then(res => {
+      .then( res => {
         console.log(res)
         if (res.status === 200) {
-          toast.info('Your cart is cleared.', {
+          toast.info('Your cart has been cleared.', {
             position: toast.POSITION.BOTTOM_RIGHT
           })
           this.props.history.push(`/shop`)
@@ -72,6 +72,9 @@ class Cart extends Component {
       })
       .catch(err => {
         console.log(err)
+        toast.error(`Unable to clear cart. Please try again.`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
       })
   }
 
@@ -90,12 +93,12 @@ class Cart extends Component {
     token.card = void 0
     axios
       .post(`/api/payment/${this.props.cus_id}`, { token, total, cart })
-      .then(res => {
-        console.log(res)
+      .then( res => {
+        console.log(res.data)
         toast.info(`Thank you for purchasing our art!`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
-        // this.sendConfirmation()
+        this.sendConfirmation(res.data)
         this.clearCart(this.props.cus_id)
       })
       .catch(err => {
@@ -107,9 +110,19 @@ class Cart extends Component {
   }
 
   // NodeMailer:
-
-  sendConfirmation = () => {
-
+  sendConfirmation = async (id) => {
+    const { email, username } = this.props
+    await axios
+      .post(`api/mail/${id}`, {email, username})
+      .then( res => {
+        console.log(res)
+        toast.info(`An email confirmation has been sent to ${email}`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {
@@ -213,6 +226,7 @@ class Cart extends Component {
 const mapStateToProps = reduxState => {
   return {
     cus_id: reduxState.customer.cus_id,
+    username: reduxState.customer.username,
     email: reduxState.customer.email
   }
 }
