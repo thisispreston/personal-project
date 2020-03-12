@@ -16,16 +16,19 @@ function Product (props) {
 
   // const { prod_id, img, price, name, category, addToCart } = props
   useEffect(() => {
-    axios.get(`/api/product/${prod_id}`).then(res => {
+    axios
+      .get(`/api/product/${prod_id}`)
+      .then(res => {
       const { img, price, name, category, artist_name } = res.data[0]
       setImg(img)
       setPrice(price)
       setName(name)
       setCategory(category)
       setArtistName(artist_name)
-    }).catch(err => {
-      console.log(err)
-    }) 
+      })
+      .catch(err => {
+        console.log(err)
+      }) 
   },[prod_id])
   // Fill the array with variables to watch; the empty array means it will fire once
 
@@ -33,13 +36,15 @@ function Product (props) {
     await axios
       .post(`/api/cart/${props.cus_id}`, {prod_id})
       .then(res => {
-        toast.success('Item added to cart.', {
+        toast.info('Item added to cart.', {
           position: toast.POSITION.BOTTOM_RIGHT
         })
         props.history.push(`/shop`)
       })
       .catch(err => {
-      console.log(err)
+        toast.error(`Unable to add to cart. Please try again.`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
       }) 
   }
 

@@ -78,7 +78,9 @@ class Cart extends Component {
         }
       })
       .catch(err => {
-        console.log(err)
+        toast.error(`Unable to remove item. Please try again.`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
       })
   }
 

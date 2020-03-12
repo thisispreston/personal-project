@@ -24,19 +24,8 @@ class Shop extends Component {
         })
       })
       .catch(err => {
-      console.log(err)
-      }) 
-  }
-
-  addToCart = async (id) => {
-    await axios
-      .post(`/api/cart/${id}`)
-      .then(res => {
-      console.log(res)
+        console.log(err)
       })
-      .catch(err => {
-      console.log(err)
-      }) 
   }
 
   render () {
