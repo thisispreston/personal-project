@@ -13,6 +13,7 @@ class Cart extends Component {
     this.state = {
       cart: [],
       total: null,
+      reducedCart: [],
     }
   }
 
@@ -22,23 +23,46 @@ class Cart extends Component {
 
 // MANIPULATING CART ITEMS:
   getCart = async () => {
-    await axios
+    axios
       .get(`/api/cart/${this.props.cus_id}`)
       .then( res => {
         this.setState({
           cart: res.data
         })
+        let total = 0
+        this.state.cart.filter(e => {
+          return total += e.price
+        })
+        this.setState({
+          total
+        })
+        this.reduceCart()
       })
       .catch(err => {
         console.log(err)
       })
+  }
 
-    let total = 0
-    await this.state.cart.filter(e => {
-      return total += e.price
+  reduceCart = () => {
+    let { cart } = this.state
+    let reducedCart = []
+
+    cart.map( e => {
+      const cartItem = reducedCart.find( item => (
+        item.prod_id === e.prod_id
+      ))
+      if (!e.qty) {
+        e.qty = 1
+      }
+      if (cartItem) {
+        cartItem.qty += 1
+        cartItem.price += e.price
+      } else {
+        reducedCart.push(e)
+      }
     })
     this.setState({
-      total
+      reducedCart
     })
   }
 
@@ -62,7 +86,6 @@ class Cart extends Component {
     axios
       .delete(`/api/cart/${id}`)
       .then( res => {
-        console.log(res)
         if (res.status === 200) {
           toast.info('Your cart has been cleared.', {
             position: toast.POSITION.BOTTOM_RIGHT
@@ -94,11 +117,10 @@ class Cart extends Component {
     axios
       .post(`/api/payment/${this.props.cus_id}`, { token, total, cart })
       .then( res => {
-        console.log(res.data)
         toast.info(`Thank you for purchasing our art!`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
-        this.sendConfirmation(res.data)
+        this.sendConfirmation(res.data.order_id)
         this.clearCart(this.props.cus_id)
       })
       .catch(err => {
@@ -110,12 +132,11 @@ class Cart extends Component {
   }
 
   // NodeMailer:
-  sendConfirmation = async (id) => {
+  sendConfirmation = (id) => {
     const { email, username } = this.props
-    await axios
+    axios
       .post(`api/mail/${id}`, {email, username})
-      .then( res => {
-        console.log(res)
+      .then( () => {
         toast.info(`An email confirmation has been sent to ${email}`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
@@ -126,7 +147,7 @@ class Cart extends Component {
   }
 
   render() {
-    let cartItems = this.state.cart.map((e, i) => {
+    let cartItems = this.state.reducedCart.map((e, i) => {
       return (
         <div
           className='cart-item-card'
@@ -156,8 +177,7 @@ class Cart extends Component {
               {e.name}
             </p>
             <p>
-              QUANTITY:
-              {/* {quantity} */}
+              QUANTITY: {e.qty}
             </p>
             <button
               className='remove-item'
@@ -169,7 +189,7 @@ class Cart extends Component {
         </div>
       )
     })
-
+console.log(this.state.reducedCart)
     return (
       <div className='cart-page'>
         <button

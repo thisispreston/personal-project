@@ -102,11 +102,9 @@ module.exports = {
           await cart.map( e => {
             db.orders_products([order_id, e.prod_id])
           })
-          return res.status(200).send(charge)
+          return res.status(200).send({charge, order_id})
         }
       }
     )
   },
 }
-
-
