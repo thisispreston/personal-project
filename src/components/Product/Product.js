@@ -19,12 +19,12 @@ function Product (props) {
     axios
       .get(`/api/product/${prod_id}`)
       .then(res => {
-      const { img, price, name, category, artist_name } = res.data[0]
-      setImg(img)
-      setPrice(price)
-      setName(name)
-      setCategory(category)
-      setArtistName(artist_name)
+        const { img, price, name, category, artist_name } = res.data[0]
+        setImg(img)
+        setPrice(price)
+        setName(name)
+        setCategory(category)
+        setArtistName(artist_name)
       })
       .catch(err => {
         console.log(err)
@@ -35,7 +35,7 @@ function Product (props) {
   let addToCart = async () => {
     await axios
       .post(`/api/cart/${props.cus_id}`, {prod_id})
-      .then(res => {
+      .then(() => {
         toast.info('Item added to cart.', {
           position: toast.POSITION.BOTTOM_RIGHT
         })

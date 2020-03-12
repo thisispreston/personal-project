@@ -1,0 +1,27 @@
+.cart-page {
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-card {
+  height: 125px;
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-img {
+  height: 100px;
+  width: 100px;
+}
+
+.cole {
+  font-size: 100px;
+}

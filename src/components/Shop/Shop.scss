@@ -1,0 +1,16 @@
+.shop {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  height: 225px;
+  width: 225px;
+}
+
+.product-img {
+  height: 200px;
+  width: 200px;
+}

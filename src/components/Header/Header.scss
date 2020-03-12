@@ -1,0 +1,29 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  background: rgb(225,134,68, .45);
+  position: relative;
+  color: #3486aa;
+}
+
+a {
+  color: #3486aa;
+}
+
+.logo {
+  height: 10vh;
+  width: 10vh;
+  background-color: #fad398;
+}
+
+.header:hover {
+  background: rgb(225,134,68, .3);
+}
+
+.logout:hover {
+  opacity: 8;
+}
+
+a:hover {
+  opacity: 8;
+}

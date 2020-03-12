@@ -18,7 +18,8 @@ class Shop extends Component {
 
   getProducts = () => {
     axios
-      .get('/api/products').then(res => {
+      .get('/api/products')
+      .then(res => {
         this.setState({
           products: res.data
         })

@@ -192,7 +192,7 @@ class Cart extends Component {
         </div>
       )
     })
-console.log(this.state.reducedCart)
+    
     return (
       <div className='cart-page'>
         <button
