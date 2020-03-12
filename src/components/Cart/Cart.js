@@ -101,6 +101,22 @@ class Cart extends Component {
       })
   }
 
+  // NodeMailer:
+  sendConfirmation = (id) => {
+    console.log(id)
+    const { email, username } = this.props
+    axios
+      .post(`/api/mail/${id}`, {email, username})
+      .then( () => {
+        toast.info(`An email confirmation has been sent to ${email}`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   // PLACING AN ORDER:
   onOpened=()=>{
     console.log('this is opened')
@@ -128,21 +144,6 @@ class Cart extends Component {
         toast.error(`Something went wrong with your order. Please try again.`, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
-      })
-  }
-
-  // NodeMailer:
-  sendConfirmation = (id) => {
-    const { email, username } = this.props
-    axios
-      .post(`api/mail/${id}`, {email, username})
-      .then( () => {
-        toast.info(`An email confirmation has been sent to ${email}`, {
-          position: toast.POSITION.BOTTOM_RIGHT
-        })
-      })
-      .catch(err => {
-        console.log(err)
       })
   }
 

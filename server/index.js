@@ -55,4 +55,4 @@ app.delete('/api/cart/:id', ctrl.clearCart) //cus_id
 app.post('/api/payment/:id', ctrl.placeOrder)
 
 // NODEMAILER ENDPOINT
-app.post('api/mail/:id', emailCtrl.sendEmail)
+app.post('/api/mail/:id', emailCtrl.sendEmail)

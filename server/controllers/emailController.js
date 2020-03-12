@@ -1,9 +1,11 @@
 require('dotenv').config()
+const chalk = require("chalk")
 const nodemailer = require('nodemailer')
 const {EMAIL, PASSWORD} = process.env
 
 module.exports = {
   sendEmail: (req, res) => {
+    console.log(chalk.blue('hit sendEmail'))
     const {id} = req.params
     const { email, username } = req.body
 
@@ -24,7 +26,7 @@ module.exports = {
 
       Best Regards, 
       Artsy Fartsy
-    `
+      `
 
     let mailOptions = {
         from: EMAIL,
