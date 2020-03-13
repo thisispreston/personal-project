@@ -1,13 +1,35 @@
 .header {
   height: 10vh;
   width: 100%;
-  background: rgb(225,134,68, .45);
+  background: rgba(225, 134, 68, 0.45);
   position: relative;
   color: #3486aa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.header:hover {
+  background: rgba(225, 134, 68, 0.3);
 }
 
 a {
   color: #3486aa;
+  text-shadow: 2px, 2px, 5px, #c0dee0;
 }
 
 .logo {
@@ -16,14 +38,59 @@ a {
   background-color: #fad398;
 }
 
-.header:hover {
-  background: rgb(225,134,68, .3);
-}
-
 .logout:hover {
-  opacity: 8;
+  font-weight: 900;
+  font-size: medium;
 }
 
 a:hover {
-  opacity: 8;
+  font-weight: 900;
+  font-size: medium;
 }
+
+.header-buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.nav-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.website-name {
+  font-weight: 900;
+  font-size: 40px;
+}
+/*# sourceMappingURL=Header.css.map */

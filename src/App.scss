@@ -5,10 +5,5 @@
   height: 100vh;
   width: 100%;
   @include background-img('/assets/Background-img-blue-flowers.png', #cccccc, center, no-repeat, cover, fixed);
-  // background-image: url('/assets/Background-img-blue-flowers.png');
-  // background-color: #cccccc;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // position: fixed;
+  font-family: $font-family;
 }

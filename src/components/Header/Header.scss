@@ -1,29 +1,50 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .header {
   height: 10vh;
   width: 100%;
-  background: rgb(225,134,68, .45);
+  background: $orange-dark;
   position: relative;
-  color: #3486aa;
+  color: $blue-medium;
+  @include flexbox(flex, row, nowrap, space-between, center, stretch);
+}
+
+.header:hover {
+  background: $orange-light;
 }
 
 a {
-  color: #3486aa;
+  color: $blue-medium;
+  text-shadow: $text-shadow-blue;
 }
 
 .logo {
   height: 10vh;
   width: 10vh;
-  background-color: #fad398;
-}
-
-.header:hover {
-  background: rgb(225,134,68, .3);
+  background-color: $logo-background-color;
 }
 
 .logout:hover {
-  opacity: 8;
+  font-weight: $font-bold;
+  font-size: $font-medium;
 }
 
 a:hover {
-  opacity: 8;
+  font-weight: $font-bold;
+  font-size: $font-medium;
+}
+
+.header-buttons {
+  width: 100%;
+  @include flexbox(flex, row, nowrap, space-between, center, stretch);
+}
+
+.nav-buttons {
+  @include flexbox(flex, row, nowrap, space-between, center, stretch);
+}
+
+.website-name {
+  font-weight: $font-bold;
+  font-size: 40px;
 }

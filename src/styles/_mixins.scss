@@ -15,3 +15,12 @@
   -ms-box-shadow: $x, $y, $blur, $c;
   box-shadow: $x, $y, $blur, $c;
 }
+
+@mixin flexbox($display, $direction, $nowrap, $justify, $items, $content){
+  display: $display;
+	flex-direction: $direction;
+	flex-wrap: $nowrap;
+	justify-content: $justify;
+	align-items: $items;
+	align-content: $content;
+}

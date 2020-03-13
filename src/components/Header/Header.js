@@ -9,17 +9,29 @@ function Header (props) {
   return (
     <div className="header">
       <div className='header-buttons'>
-        <div className='nav-buttons'>
-          <Link to='/'>
+        <div>
+          <Link 
+            to='/'
+            className='nav-buttons'
+          >
             HOME
           </Link>
-          <Link to='/shop'>
+          <Link 
+            to='/shop'
+            className='nav-buttons'
+          >
             SHOP
           </Link>
-          <Link to='/cart'>
+          <Link 
+            to='/cart'
+            className='nav-buttons'
+          >
             CART
           </Link>
-          <Link to='/profile'>
+          <Link 
+            to='/profile'
+            className='nav-buttons'
+          >
             PROFILE
           </Link>
         </div>
