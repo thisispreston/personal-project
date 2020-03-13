@@ -1,7 +1,9 @@
 @import 'variables'
+@import 'mixins'
 
 .App {
   width: 100%;
+  @include back
   background-image: url('/assets/Background-img-blue-flowers.png');
   background-color: #cccccc;
   background-position: center;

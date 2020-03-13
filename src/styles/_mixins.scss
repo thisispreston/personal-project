@@ -1,0 +1,10 @@
+
+
+@mixin background-img($url, $c, $position, $repeat, $size, $position) {
+  background-image: $url;
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+}
