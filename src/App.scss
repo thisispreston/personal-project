@@ -1,13 +1,14 @@
-@import 'variables'
-@import 'mixins'
+@import './styles/mixins';
+@import './styles/variables';
 
 .App {
+  height: 100vh;
   width: 100%;
-  @include back
-  background-image: url('/assets/Background-img-blue-flowers.png');
-  background-color: #cccccc;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
+  @include background-img('/assets/Background-img-blue-flowers.png', #cccccc, center, no-repeat, cover, fixed);
+  // background-image: url('/assets/Background-img-blue-flowers.png');
+  // background-color: #cccccc;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // position: fixed;
 }

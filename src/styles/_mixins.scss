@@ -1,10 +1,17 @@
 
 
 @mixin background-img($url, $c, $position, $repeat, $size, $position) {
-  background-image: $url;
-  background-color: #cccccc;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
+  background-image: url($url);
+  background-color: $c;
+  background-position: $position;
+  background-repeat: $repeat;
+  background-size: $size;
+  position: $position;
+}
+
+@mixin box-shadow($x, $y, $blur, $c){ 
+  -webkit-box-shadow: $x, $y, $blur, $c;
+  -moz-box-shadow: $x, $y, $blur, $c;
+  -ms-box-shadow: $x, $y, $blur, $c;
+  box-shadow: $x, $y, $blur, $c;
 }
