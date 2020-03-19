@@ -1,8 +1,10 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .shop {
   height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  @include flexbox(flex, column, wrap, flex-start, center, stretch);
+  overflow: auto;
 }
 
 .product-card {

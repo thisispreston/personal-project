@@ -9,28 +9,30 @@ function Header (props) {
   return (
     <div className="header">
       <div className='header-buttons'>
-        <div>
+        <div
+          className='nav-buttons'
+        >
           <Link 
             to='/'
-            className='nav-buttons'
+            className='nav-button'
           >
             HOME
           </Link>
           <Link 
             to='/shop'
-            className='nav-buttons'
+            className='nav-button'
           >
             SHOP
           </Link>
           <Link 
             to='/cart'
-            className='nav-buttons'
+            className='nav-button'
           >
             CART
           </Link>
           <Link 
             to='/profile'
-            className='nav-buttons'
+            className='nav-button'
           >
             PROFILE
           </Link>

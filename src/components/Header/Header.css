@@ -1,4 +1,5 @@
 .header {
+  padding: 20px;
   height: 10vh;
   width: 100%;
   background: rgba(225, 134, 68, 0.45);
@@ -21,6 +22,7 @@
           align-items: center;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
+  text-shadow: 2px 2px 5px #c0dee0;
 }
 
 .header:hover {
@@ -29,7 +31,6 @@
 
 a {
   color: #3486aa;
-  text-shadow: 2px, 2px, 5px, #c0dee0;
 }
 
 .logo {
@@ -49,7 +50,7 @@ a:hover {
 }
 
 .header-buttons {
-  width: 100%;
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -59,9 +60,8 @@ a:hover {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -69,7 +69,7 @@ a:hover {
       align-content: stretch;
 }
 
-.nav-buttons {
+.nav-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,9 +79,8 @@ a:hover {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
