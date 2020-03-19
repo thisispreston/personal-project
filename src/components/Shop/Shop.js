@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import "./Shop.css"
 import { withRouter, Link } from 'react-router-dom'
- 
+import ProductCard from '../ProductCard/ProductCard'
+
 class Shop extends Component {
   constructor(props) {
     super(props)
@@ -32,31 +33,11 @@ class Shop extends Component {
   render () {
     let productCards = this.state.products.map((e, i) => {
       return (
-        <Link 
-          to={`/product/${e.prod_id}`} 
+        <ProductCard
+          className='product-card'
+          {...e}
           key={i}
-        >
-          <div
-            className='product-card'
-            {...e}
-          >
-            <img 
-              alt='product'
-              className='product-img'
-              src={e.img}
-            />
-            <p
-              className='price'
-            >
-              ${e.price}
-            </p>
-            <p
-              className='product-name'
-            >
-              {e.name}
-            </p>
-          </div>
-        </Link>
+        />
       )
     })
 
