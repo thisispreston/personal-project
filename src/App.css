@@ -1,9 +1,12 @@
 .App {
+  height: 100vh;
   width: 100%;
-  background-image: url('/assets/Background-img-blue-flowers.png');
+  background-image: url("/assets/Background-img-blue-flowers.png");
   background-color: #cccccc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
+  font-family: Chalkduster, fantasy;
 }
+/*# sourceMappingURL=App.css.map */

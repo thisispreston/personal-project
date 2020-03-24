@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import "./Shop.css"
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import ProductCard from '../ProductCard/ProductCard'
 
 class Shop extends Component {

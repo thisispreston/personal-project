@@ -1,9 +1,9 @@
 
 
-@mixin background-img($url, $c, $position, $repeat, $size, $position) {
+@mixin background-img($url, $c, $b-position, $repeat, $size, $position) {
   background-image: url($url);
   background-color: $c;
-  background-position: $position;
+  background-position: $b-position;
   background-repeat: $repeat;
   background-size: $size;
   position: $position;

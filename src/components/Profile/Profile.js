@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
 import { login, deleteAccount, editAccount } from "../../redux/cusReducer";
+import './Profile.css'
 
 function Profile (props) {
   const [editing, setEditing] = useState(false);
@@ -14,10 +15,10 @@ function Profile (props) {
     <div className="profile">
       <div className='profile-card'>
         <h1 className='profile-info'>
-          Username: {username}
-          Email: {email}
+          <span>USERNAME: {username}</span>
+          <span>EMAIL: {email}</span>
         </h1>
-        <div className="editingCard">
+        <div className="editing-card">
           {
             (editing === false) ? (
               <div>
@@ -61,7 +62,7 @@ function Profile (props) {
             )
           }
         </div>
-        <div className="deletingCard">
+        <div className="deleting-card">
           {
             (deleting === false) ? (
               <div>

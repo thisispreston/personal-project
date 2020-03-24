@@ -18,6 +18,7 @@
   -ms-flex-line-pack: stretch;
       align-content: stretch;
   overflow: auto;
+  padding-top: 10vh;
   padding-bottom: 10vh;
 }
 

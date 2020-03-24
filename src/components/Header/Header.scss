@@ -43,6 +43,7 @@ a:hover {
 
 .nav-button {
   @include flexbox(flex, row, nowrap, space-around, center, stretch);
+  margin-top: 5px;
 }
 
 .website-name {

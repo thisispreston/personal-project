@@ -1,5 +1,6 @@
 // DIMENSIONS
 $height: 100vh;
+$card-padding: 15px;
 
 // TEXT
 $font-family: Chalkduster, fantasy;
@@ -12,10 +13,13 @@ $text-shadow-blue: 2px 2px 5px rgba(192,222,224,1);
 // COLORS
 $background-color: #cccccc;
 $logo-background-color: #fad398;
-$blue-medium: #3486aa;
+$blue-medium: rgba(52,134,170,.8);
+$blue-medium-transparent: rgba(52,134,170,.6);
+$blue-semi-transparent-hover: rgba(58,87,124,.55);
+$blue-semi-transparent: rgba(58,87,124,.7);
 $blue-light: rgba(192,222,224,1);
-$orange-dark: rgba(225,134,68, .45);
-$orange-light: rgba(225,134,68, .3);
+$orange-dark: rgba(225,134,68, .50);
+$orange-light: rgba(225,134,68, .35);
 
 
 // IMAGES

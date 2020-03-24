@@ -5,6 +5,7 @@
   height: 90vh;
   @include flexbox(flex, column, wrap, flex-start, center, stretch);
   overflow: auto;
+  padding-top: 10vh;
   padding-bottom: 10vh;
 }
 
