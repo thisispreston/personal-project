@@ -34,7 +34,6 @@ class Shop extends Component {
     let productCards = this.state.products.map((e, i) => {
       return (
         <ProductCard
-          className='product-card'
           {...e}
           key={i}
         />

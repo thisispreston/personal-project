@@ -1,5 +1,5 @@
 .shop {
-  height: 100vh;
+  height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,11 +18,13 @@
   -ms-flex-line-pack: stretch;
       align-content: stretch;
   overflow: auto;
+  padding-bottom: 10vh;
 }
 
 .product-card {
   height: 225px;
   width: 225px;
+  margin-bottom: 50px;
 }
 
 .product-img {

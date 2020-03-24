@@ -2,14 +2,16 @@
 @import '../../styles/variables.scss';
 
 .shop {
-  height: 100vh;
+  height: 90vh;
   @include flexbox(flex, column, wrap, flex-start, center, stretch);
   overflow: auto;
+  padding-bottom: 10vh;
 }
 
 .product-card {
   height: 225px;
   width: 225px;
+  margin-bottom: 50px;
 }
 
 .product-img {
