@@ -13,7 +13,7 @@
   @include flexbox(flex, column, nowrap, space-around, center, center);
   height: 20vh;
   width: 60vw;
-  background-color: $blue-medium-transparent;
+  background-color: $blue-medium;
   font-size: $font-large;
 }
 
@@ -32,4 +32,23 @@
   width: 35vw;
   padding: $card-padding;
   background-color: $blue-medium;
+}
+
+.profile-button {
+  @include button($orange-darker, none, $blue-light, 2vh, center, none, $font-medium);
+  margin-bottom: 1vw;
+}
+
+.profile-button:hover {
+  background-color: $orange-darkest;
+}
+
+.profile-form {
+  @include flexbox(flex, column, nowrap, center, space-around, stretch);
+}
+
+.profile-input {
+  width: 15vw;
+  height: 3vw;
+  margin-bottom: 1vw;
 }

@@ -20,11 +20,17 @@
   margin-bottom: 50px;
   background-color: $blue-medium;
   text-decoration: none;
-  
+  opacity: .9;
+  transition: 0.3s;
 }
 
 .product-img {
   height: 18vh;
   width: 18vh;
   box-shadow: $box-shadow-orange;
+}
+
+.product-card:hover {
+  opacity: 1;
+  transition: 0.3s;
 }

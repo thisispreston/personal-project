@@ -23,6 +23,7 @@ function Profile (props) {
               (editing === false) ? (
                 <div>
                   <button
+                    className='profile-button'
                     onClick={() => setEditing(true)}
                   >
                     EDIT ACCOUNT
@@ -30,6 +31,7 @@ function Profile (props) {
                 </div>
               ):(
                 <form
+                  className='profile-form'
                   onSubmit={ async (e) => {
                     e.preventDefault()
                     await props.editAccount(cus_id, username, email)
@@ -37,23 +39,27 @@ function Profile (props) {
                   }}
                 >
                   <input 
+                    className='profile-input'
                     type="text"
                     value={username}
                     placeholder="enter a username"
                     onChange={e => setUsername(e.target.value)}
                   ></input>
                   <input 
+                    className='profile-input'
                     type="email" 
                     value={email} 
                     placeholder="enter your email" 
                     onChange={e => setEmail(e.target.value)}
                   ></input>
                   <button
+                    className='profile-button'
                     type="submit"
                   >
                     SAVE CHANGES
                   </button>
                   <button
+                    className='profile-button'
                     onClick={() => setEditing(false)}
                   >
                     CANCEL
@@ -67,6 +73,7 @@ function Profile (props) {
               (deleting === false) ? (
                 <div>
                   <button
+                    className='profile-button'
                     onClick={() => setDeleting(true)}
                   >
                     DELETE ACCOUNT
@@ -74,29 +81,34 @@ function Profile (props) {
                 </div>
               ):(
                 <form
+                  className='profile-form'
                   onSubmit={ async (e) => {
                     e.preventDefault()
                     await props.deleteAccount(cus_id, username, password)
                   }}
                 >
                   <input 
+                    className='profile-input'
                     type="text"
                     value={username}
                     placeholder="enter your username"
                     onChange={e => setUsername(e.target.value)}
                   ></input>
                   <input 
+                    className='profile-input'
                     type="password" 
                     value={password} 
                     placeholder="enter your password" 
                     onChange={e => setPassword(e.target.value)}
                   ></input>
                   <button
+                    className='profile-button'
                     type="submit"
                   >
                     DELETE ACCOUNT
                   </button>
                   <button
+                    className='profile-button'
                     onClick={() => setDeleting(false)}
                   >
                     CANCEL

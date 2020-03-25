@@ -1,25 +1,35 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .cart-page {
-  height: 100vh;
+  height: 90vh;
+  @include flexbox(flex, row, wrap, space-around, center, stretch);
   overflow: auto;
-  display: flex;
-  flex-direction: row;
+  padding-bottom: 10vh;
 }
 
 .cart-items {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(flex, column, nowrap, space-around, center, stretch);
 }
 
 .cart-item-card {
-  height: 125px;
-  width: 250px;
-  display: flex;
-  flex-direction: row;
+  height: 15vw;
+  width: 45vw;
+  background-color: $blue-medium-transparent;
+  @include flexbox(flex, row, nowrap, space-around, center, stretch);
+  margin-bottom: 2vh;
+  transition: 0.5s;
+}
+
+.cart-item-card:hover {
+  background-color: $blue-medium;
+  transition: 0.5s;
 }
 
 .item-img {
-  height: 100px;
-  width: 100px;
+  height: 12vw;
+  width: 12vw;
+  @include box-shadow(0px, 8px, 10px, 10px, rgba(225,134,68, .6));
 }
 
 .cole {

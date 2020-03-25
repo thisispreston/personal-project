@@ -49,6 +49,9 @@
   margin-bottom: 50px;
   background-color: rgba(52, 134, 170, 0.8);
   text-decoration: none;
+  opacity: .9;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .product-img {
@@ -56,5 +59,11 @@
   width: 18vh;
   -webkit-box-shadow: 0px 12px 20px 20px rgba(225, 134, 68, 0.6);
           box-shadow: 0px 12px 20px 20px rgba(225, 134, 68, 0.6);
+}
+
+.product-card:hover {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 /*# sourceMappingURL=Shop.css.map */

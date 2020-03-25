@@ -195,16 +195,16 @@ class Cart extends Component {
     
     return (
       <div className='cart-page'>
-        <button
-          className='clear-cart'
-          onClick={() => this.clearCart(this.props.cus_id)}
-        >
-          CLEAR CART
-        </button>
         <div
           className='cart-items'
         >
           {cartItems}
+          <button
+            className='clear-cart'
+            onClick={() => this.clearCart(this.props.cus_id)}
+          >
+            CLEAR CART
+          </button>
         </div>
         <div
           className='order-card'

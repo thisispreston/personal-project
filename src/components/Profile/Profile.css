@@ -40,7 +40,7 @@
       align-content: center;
   height: 20vh;
   width: 60vw;
-  background-color: rgba(52, 134, 170, 0.6);
+  background-color: rgba(52, 134, 170, 0.8);
   font-size: larger;
 }
 
@@ -90,5 +90,47 @@
   width: 35vw;
   padding: 15px;
   background-color: rgba(52, 134, 170, 0.8);
+}
+
+.profile-button {
+  background-color: rgba(225, 134, 68, 0.8);
+  border: none;
+  color: #c0dee0;
+  padding: 2vh;
+  text-align: center;
+  text-decoration: none;
+  font-size: medium;
+  display: inline-block;
+  margin-bottom: 1vw;
+}
+
+.profile-button:hover {
+  background-color: #e18644;
+}
+
+.profile-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.profile-input {
+  width: 15vw;
+  height: 3vw;
+  margin-bottom: 1vw;
 }
 /*# sourceMappingURL=Profile.css.map */

@@ -58,17 +58,20 @@ function Product (props) {
       />
       <div className='info-card'>
         <h1
-          className='product-name'
+          className='product-name-2'
         >
           {name}
         </h1>
-        <Link to={`/category/${category}`} >
+        {/* <Link 
+          to={`/category/${category}`}
+          className='category'
+        >
           {category}
-        </Link>
+        </Link> */}
         <h3
           className='product-artist'
         >
-          {artistName}
+          ARTIST: "{artistName}"
         </h3>
         <p
           className='product-price'
@@ -76,6 +79,7 @@ function Product (props) {
           ${price}
         </p>
         <button
+          className="add-to-cart"
           onClick={() => addToCart()}
         >
           ADD TO CART

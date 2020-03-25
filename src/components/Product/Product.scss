@@ -1,17 +1,54 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .product {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  height: 90vh;
+  @include flexbox(flex, row, nowrap, space-around, center, center);
+  overflow: auto;
+  padding-right: 10vh;
+  padding-left: 10vh;
 }
 
 .product-image {
-  height: 400px;
-  width: 400px;
+  height: 60vh;
+  width: 60vh;
+  box-shadow: $box-shadow-orange;
 }
 
 .info-card {
-  height: 300px;
-  width: 500px;
+  height: 30vh;
+  width: 30vh;
+  @include flexbox(flex, column, nowrap, space-around, center, stretch);
+  background-color: $blue-medium-transparent;
+  transition: 0.4s;
 }
 
+.info-card:hover {
+  background-color: $blue-medium;
+  transition: 0.4s;
+}
+
+.product-name-2 {
+  color: $blue-light;
+  font-weight: $font-bold;
+  font-size: $font-large;
+  text-decoration: underline wavy $orange-darkest;
+}
+
+.product-artist {
+  color: $blue-light;
+  font-size: 2vh;
+}
+
+.product-price {
+  color: $blue-light;
+  font-size: 5vh;
+}
+
+.add-to-cart {
+  @include button($orange-darker, none, $blue-light, 2vh, center, none, $font-medium)
+}
+
+.add-to-cart:hover {
+  background-color: $orange-darkest;
+}

@@ -9,11 +9,8 @@
   position: $position;
 }
 
-@mixin box-shadow($x, $y, $blur, $c){ 
-  -webkit-box-shadow: $x, $y, $blur, $c;
-  -moz-box-shadow: $x, $y, $blur, $c;
-  -ms-box-shadow: $x, $y, $blur, $c;
-  box-shadow: $x, $y, $blur, $c;
+@mixin box-shadow($x, $y, $blur, $spread, $c){ 
+  box-shadow: $x, $y, $blur, $spread, $c;
 }
 
 @mixin flexbox($display, $direction, $nowrap, $justify, $items, $content){
@@ -23,4 +20,15 @@
 	justify-content: $justify;
 	align-items: $items;
 	align-content: $content;
+}
+
+@mixin button($background-color, $border, $color, $padding, $text-align, $text-decoration, $font-size){
+  background-color: $background-color;
+  border: $border;
+  color: $color;
+  padding: $padding;
+  text-align: $text-align;
+  text-decoration: $text-decoration;
+  font-size: $font-size;
+  display: inline-block;
 }
