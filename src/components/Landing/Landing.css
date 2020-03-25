@@ -23,26 +23,17 @@
   color: #c0dee0;
 }
 
-.login-card:hover, .register-card:hover {
-  background: rgba(52, 134, 170, 0.6);
-}
-
 .company-info {
   height: 55vh;
-  width: 30vw;
+  width: 40vh;
   padding: 15px;
   background-color: rgba(52, 134, 170, 0.8);
-  font-size: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  font-size: 3vh;
+}
+
+.greeting {
+  line-height: 1.5;
+  padding: 1vw;
 }
 
 .login-card, .register-card {
@@ -64,8 +55,53 @@
   -ms-flex-line-pack: stretch;
       align-content: stretch;
   height: 55vh;
-  width: 30vw;
+  width: 40vh;
   padding: 15px;
   background-color: rgba(52, 134, 170, 0.8);
+}
+
+.login-card:hover, .register-card:hover {
+  background: rgba(52, 134, 170, 0.6);
+}
+
+.landing-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.landing-input {
+  width: 15vw;
+  height: 3vw;
+  margin-bottom: 3vh;
+}
+
+.landing-button {
+  background-color: rgba(225, 134, 68, 0.8);
+  border: none;
+  color: #c0dee0;
+  padding: 2vh;
+  text-align: center;
+  text-decoration: none;
+  font-size: medium;
+  display: inline-block;
+  margin-bottom: 5vh;
+}
+
+.landing-button:hover {
+  background-color: #e18644;
 }
 /*# sourceMappingURL=Landing.css.map */

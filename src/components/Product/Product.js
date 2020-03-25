@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import { connect } from "react-redux"
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from "axios"
 import { toast } from 'react-toastify'
 import './Product.css'
@@ -9,7 +9,7 @@ function Product (props) {
   const [img, setImg] = useState("")
   const [price, setPrice] = useState(null)
   const [name, setName] = useState("")
-  const [category, setCategory] = useState("")
+  // const [category, setCategory] = useState("")
   const [artistName, setArtistName] = useState("")
 
   const prod_id = +props.match.params.id
@@ -19,11 +19,11 @@ function Product (props) {
     axios
       .get(`/api/product/${prod_id}`)
       .then(res => {
-        const { img, price, name, category, artist_name } = res.data[0]
+        const { img, price, name, artist_name } = res.data[0]
         setImg(img)
         setPrice(price)
         setName(name)
-        setCategory(category)
+        // setCategory(category)
         setArtistName(artist_name)
       })
       .catch(err => {

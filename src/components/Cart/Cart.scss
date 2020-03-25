@@ -9,11 +9,13 @@
 }
 
 .cart-items {
-  @include flexbox(flex, column, nowrap, space-around, center, stretch);
+  @include flexbox(flex, column, nowrap, flex-start, center, stretch);
+  margin-top: 4vh;
+  margin-bottom: 6vh;
 }
 
 .cart-item-card {
-  height: 15vw;
+  height: 18vw;
   width: 45vw;
   background-color: $blue-medium-transparent;
   @include flexbox(flex, row, nowrap, space-around, center, stretch);
@@ -29,9 +31,54 @@
 .item-img {
   height: 12vw;
   width: 12vw;
-  @include box-shadow(0px, 8px, 10px, 10px, rgba(225,134,68, .6));
+  box-shadow: 0px 0px 10px 10px rgba(225,134,68, .6);
 }
 
-.cole {
-  font-size: 100px;
+.item-info {
+  @include flexbox(flex, column, nowrap, space-around, center, stretch);
+}
+
+.info {
+  margin-bottom: 3vh;
+}
+
+.quantity {
+  color: $blue-light;
+  font-size: 3vh;
+  font-weight: $font-bold;
+  margin-top: 3vh;
+}
+
+.cart-price {
+  color: $blue-light;
+  font-size: 5vh;
+  text-decoration: underline overline wavy $orange-darkest;
+}
+
+.remove-item, .clear-cart, .checkout {
+  @include button($orange-darker, none, $blue-light, 2vh, center, none, $font-medium)
+}
+
+.remove-item:hover, .clear-cart:hover, .checkout:hover {
+  background-color: $orange-darkest;
+}
+
+.order-card {
+  height: 25vw;
+  width: 25vw;
+  background-color: $blue-medium-transparent;
+  @include flexbox(flex, column, nowrap, space-around, center, stretch);
+  margin-bottom: 2vh;
+  transition: 0.5s;
+}
+
+.order-card:hover {
+  background-color: $blue-medium;
+  transition: 0.5s;
+}
+
+.total {
+  color: $blue-light;
+  font-size: 5vh;
+  text-decoration: underline overline solid $orange-darkest;
 }

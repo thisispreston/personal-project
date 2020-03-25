@@ -26,42 +26,50 @@ function Landing (props) {
       <div
         className="company-info"
       >
-        <p>
-          ARTSY FARTSY: We love to get artists' work sold to those looking for simple pdf files.
+        <p
+          className='greeting'
+        >
+          ARTSY FARTSY welcomes you! We love to get artists' work sold to those looking to support the arts. We appreciate your interest and hope you enjoy your experience shopping at Artsy Fartsy.
         </p>
       </div>
       {registered ? (
         <div className='login-card'>
           <form
+            className='landing-form'
             onSubmit={e => {
               e.preventDefault()
               login()
             }}
           >
             <input 
+              className='landing-input'
               type="text"
               value={username}
-              placeholder="enter a username"
+              placeholder="enter your username"
               onChange={e => setUsername(e.target.value)}
             ></input>
             <input 
+              className='landing-input'
               type="password"
               value={password}
               placeholder="enter your password"
               onChange={e => setPassword(e.target.value)}
             ></input>
-            <button>
+            <button
+              className='landing-button'
+            >
               LOGIN
             </button>
             <p>
               Don't have an account?
-              <span 
-                style={{color: "blue"}}
-                onClick={e => setRegistered(false)}
-              >
-                Click here to register.
-              </span>
             </p>
+            <span 
+              className='toggler'
+              style={{color: "rgba(58,87,124,1)"}}
+              onClick={e => setRegistered(false)}
+            >
+              Click here to register.
+            </span>
           </form>
         </div>
       ) : (
@@ -69,41 +77,48 @@ function Landing (props) {
           className='register-card'
         >
           <form
+            className='landing-form'
             onSubmit={e => {
               e.preventDefault()
               props.register(username, email, password)
             }}
           >
             <input 
+              className='landing-input'
               type="text"
               value={username}
               placeholder="enter a username"
               onChange={e => setUsername(e.target.value)}
             ></input>
             <input 
+              className='landing-input'
               type="email" 
               value={email} 
-              placeholder="enter your email" 
+              placeholder="enter an email" 
               onChange={e => setEmail(e.target.value)}
             ></input>
             <input 
+              className='landing-input'
               type="password" 
               value={password} 
-              placeholder="enter your password" 
+              placeholder="enter a password" 
               onChange={e => setPassword(e.target.value)}
             ></input>
-            <button>
+            <button
+              className='landing-button'
+            >
               REGISTER
             </button>
             <p>
               Already have an account? 
-              <span 
-                style={{color: "blue"}} 
-                onClick={e => setRegistered(true)}
-              >
-                Click here to sign in.
-              </span>
             </p>
+            <span 
+              className='toggler'
+              style={{color: "rgba(58,87,124,1)"}} 
+              onClick={e => setRegistered(true)}
+            >
+              Click here to sign in.
+            </span>
           </form>
         </div>
       )}

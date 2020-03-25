@@ -10,25 +10,46 @@
   color: $blue-light;
 }
 
-.login-card:hover, .register-card:hover {
-  background: $blue-medium-transparent;
-}
-
 .company-info {
   height: 55vh;
-  width: 30vw;
+  width: 40vh;
   padding: $card-padding;
   background-color: $blue-medium;
-  font-size: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  font-size: 3vh;
+}
+
+.greeting {
+  line-height: 1.5;
+  padding: 1vw;
 }
 
 .login-card, .register-card {
   @include flexbox(flex, column, nowrap, center, center, stretch);
   height: 55vh;
-  width: 30vw;
+  width: 40vh;
   padding: $card-padding;
   background-color: $blue-medium;
+}
+
+.login-card:hover, .register-card:hover {
+  background: $blue-medium-transparent;
+}
+
+.landing-form {
+  @include flexbox(flex, column, nowrap, space-around, center, stretch);
+}
+
+.landing-input {
+  width: 15vw;
+  height: 3vw;
+  margin-bottom: 3vh;
+}
+
+.landing-button {
+  @include button($orange-darker, none, $blue-light, 2vh, center, none, $font-medium);
+  margin-bottom: 5vh;
+}
+
+.landing-button:hover {
+  background-color: $orange-darkest;
 }

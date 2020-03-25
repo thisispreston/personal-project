@@ -20,17 +20,13 @@
   height: 10vh;
   width: 10vh;
   background-color: $logo-background-color;
+  font-size: $font-large;
 }
 
 .logout:hover {
   font-weight: $font-bold;
-  font-size: $font-medium;
 }
 
-.nav-button:hover {
-  font-weight: $font-bold;
-  font-size: $font-medium;
-}
 
 .header-buttons {
   width: 100vw;
@@ -42,6 +38,11 @@
   margin-top: 5px;
   color: $blue-medium;
   text-decoration: none;
+  font-size: $font-large;
+}
+
+.nav-button:hover {
+  font-weight: $font-bold;
 }
 
 .website-name {

@@ -33,16 +33,11 @@
   height: 10vh;
   width: 10vh;
   background-color: #fad398;
+  font-size: larger;
 }
 
 .logout:hover {
   font-weight: 900;
-  font-size: medium;
-}
-
-.nav-button:hover {
-  font-weight: 900;
-  font-size: medium;
 }
 
 .header-buttons {
@@ -85,6 +80,11 @@
   margin-top: 5px;
   color: rgba(52, 134, 170, 0.8);
   text-decoration: none;
+  font-size: larger;
+}
+
+.nav-button:hover {
+  font-weight: 900;
 }
 
 .website-name {

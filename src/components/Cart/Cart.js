@@ -170,20 +170,17 @@ class Cart extends Component {
             className='item-info'
           >
             <p
-              className='price'
+              className='quantity info'
+            >
+              QUANTITY: {e.qty}
+            </p>
+            <p
+              className='cart-price info'
             >
               ${e.price}
             </p>
-            <p
-              className='product-name'
-            >
-              {e.name}
-            </p>
-            <p>
-              QUANTITY: {e.qty}
-            </p>
             <button
-              className='remove-item'
+              className='remove-item info'
               onClick={() => this.removeItem(e.cart_id)}
             >
               REMOVE ITEM
@@ -199,23 +196,23 @@ class Cart extends Component {
           className='cart-items'
         >
           {cartItems}
+        </div>
+        <div
+          className='order-card'
+        >
           <button
             className='clear-cart'
             onClick={() => this.clearCart(this.props.cus_id)}
           >
             CLEAR CART
           </button>
-        </div>
-        <div
-          className='order-card'
-        >
           <p
             className='total'
           >
             TOTAL: ${this.state.total}
           </p>
           <div 
-            style={{display:'flex',flexDirection:'column', alignItems:'center', marginTop:'50px'}}
+            style={{display:'flex',flexDirection:'column', alignItems:'center'}}
           >
             <StripeCheckout
               name='Artsy Fartsy Checkout' //header
@@ -237,7 +234,11 @@ class Cart extends Component {
               shippingAddress={true} //you can collect their address
               zipCode={false}
             >
-              <button>CHECKOUT</button>
+              <button
+                className='checkout'
+              >
+                CHECKOUT
+              </button>
             </StripeCheckout>
           </div>
         </div>
