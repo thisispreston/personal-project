@@ -9,16 +9,15 @@
           flex-direction: column;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -ms-flex-line-pack: center;
       align-content: center;
-  padding-left: 10vh;
-  padding-right: 10vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
   color: #c0dee0;
 }
 
@@ -39,17 +38,14 @@
           align-items: center;
   -ms-flex-line-pack: center;
       align-content: center;
-  height: 30vh;
+  height: 20vh;
   width: 60vw;
   background-color: rgba(52, 134, 170, 0.6);
   font-size: larger;
 }
 
-.editing-card:hover, .deleting-card:hover {
-  background: rgba(52, 134, 170, 0.6);
-}
-
 .profile-card {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,8 +53,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -67,6 +63,10 @@
           align-items: center;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
+}
+
+.editing-card:hover, .deleting-card:hover {
+  background: rgba(52, 134, 170, 0.6);
 }
 
 .editing-card, .deleting-card {
@@ -86,8 +86,8 @@
           align-items: center;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
-  height: 55vh;
-  width: 30vw;
+  height: 30vh;
+  width: 35vw;
   padding: 15px;
   background-color: rgba(52, 134, 170, 0.8);
 }

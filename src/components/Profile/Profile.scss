@@ -3,32 +3,33 @@
 
 .profile {
   height: 90vh;
-  @include flexbox(flex, column, nowrap, flex-start, center, center);
-  padding-left: 10vh;
-  padding-right: 10vh;
+  @include flexbox(flex, column, nowrap, space-around, center, center);
+  padding-left: 10vw;
+  padding-right: 10vw;
   color: $blue-light;
 }
 
 .profile-info {
   @include flexbox(flex, column, nowrap, space-around, center, center);
-  height: 30vh;
+  height: 20vh;
   width: 60vw;
   background-color: $blue-medium-transparent;
   font-size: $font-large;
+}
+
+.profile-card {
+  width: 100%;
+  @include flexbox(flex, row, wrap, space-between, center, stretch);
 }
 
 .editing-card:hover, .deleting-card:hover {
   background: $blue-medium-transparent;
 }
 
-.profile-card {
-  @include flexbox(flex, row, nowrap, space-between, center, stretch);
-}
-
 .editing-card, .deleting-card {
   @include flexbox(flex, column, nowrap, space-around, center, stretch);
-  height: 55vh;
-  width: 30vw;
+  height: 30vh;
+  width: 35vw;
   padding: $card-padding;
   background-color: $blue-medium;
 }

@@ -9,13 +9,22 @@
   padding-bottom: 10vh;
 }
 
+.price, .product-name {
+  color: $blue-light;
+}
+
 .product-card {
-  height: 225px;
-  width: 225px;
+  height: 25vh;
+  width: 25vh;
+  @include flexbox(flex, column, wrap, center, center, stretch);
   margin-bottom: 50px;
+  background-color: $blue-medium;
+  text-decoration: none;
+  
 }
 
 .product-img {
-  height: 200px;
-  width: 200px;
+  height: 18vh;
+  width: 18vh;
+  box-shadow: $box-shadow-orange;
 }

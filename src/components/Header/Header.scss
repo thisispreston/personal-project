@@ -16,10 +16,6 @@
   background: $orange-light;
 }
 
-a {
-  color: $blue-medium;
-}
-
 .logo {
   height: 10vh;
   width: 10vh;
@@ -31,7 +27,7 @@ a {
   font-size: $font-medium;
 }
 
-a:hover {
+.nav-button:hover {
   font-weight: $font-bold;
   font-size: $font-medium;
 }
@@ -44,6 +40,8 @@ a:hover {
 .nav-button {
   @include flexbox(flex, row, nowrap, space-around, center, stretch);
   margin-top: 5px;
+  color: $blue-medium;
+  text-decoration: none;
 }
 
 .website-name {

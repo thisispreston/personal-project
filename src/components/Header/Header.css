@@ -29,10 +29,6 @@
   background: rgba(225, 134, 68, 0.35);
 }
 
-a {
-  color: rgba(52, 134, 170, 0.8);
-}
-
 .logo {
   height: 10vh;
   width: 10vh;
@@ -44,7 +40,7 @@ a {
   font-size: medium;
 }
 
-a:hover {
+.nav-button:hover {
   font-weight: 900;
   font-size: medium;
 }
@@ -87,6 +83,8 @@ a:hover {
   -ms-flex-line-pack: stretch;
       align-content: stretch;
   margin-top: 5px;
+  color: rgba(52, 134, 170, 0.8);
+  text-decoration: none;
 }
 
 .website-name {
