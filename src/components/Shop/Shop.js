@@ -31,20 +31,22 @@ class Shop extends Component {
   }
 
   render () {
-    let productCards = this.state.products.map((e, i) => {
-      return (
-        <ProductCard
-          {...e}
-          key={i}
-        />
-      )
-    })
+    if (this.state.products !== []) {
+      let productCards = this.state.products.map((e, i) => {
+        return (
+          <ProductCard
+            {...e}
+            key={i}
+          />
+        )
+      })
 
-    return (
-      <div className="shop">
-        {productCards}
-      </div>
-    )
+      return (
+        <div className="shop">
+          {productCards}
+        </div>
+      )
+    }
   }
 }
 
