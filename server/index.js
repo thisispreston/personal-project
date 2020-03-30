@@ -30,7 +30,7 @@ app.get('*', (req, res) => {
 })
 
 massive({
-    connectionString: CONNECTION_STRING,listen
+    connectionString: CONNECTION_STRING,
     ssl: {
         rejectUnauthorized: false
     }
