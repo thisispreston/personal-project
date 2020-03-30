@@ -8,6 +8,7 @@ const express = require("express"),
   checkCus = require('./middleware/checkCus'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
+const path = require('path')
 const app = express();
 
 app.use(express.json());
@@ -21,6 +22,12 @@ app.use(
     secret: SESSION_SECRET
   })
 );
+
+app.use(express.static(__dirname + '../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive({
     connectionString: CONNECTION_STRING,

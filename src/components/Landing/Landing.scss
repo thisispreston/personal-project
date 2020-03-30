@@ -5,8 +5,8 @@
   height: 90vh;
   @include flexbox(flex, row, wrap, space-between, center, stretch);
   overflow: auto;
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 15vw;
+  padding-right: 15vw;
   color: $blue-light;
 }
 
