@@ -75,7 +75,6 @@ module.exports = {
     }
     
     const authenticated = bcrypt.compareSync(password, cus.password)
-    console.log(authenticated)
     if (authenticated) {
       delete cus.password
       await db.delete_cus(id)
